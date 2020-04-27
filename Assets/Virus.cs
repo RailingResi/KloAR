@@ -7,11 +7,13 @@ public class Virus : MonoBehaviour
     public AudioClip[] aClips;
     public AudioSource myAudioSource;
     string btnName;
+    Renderer m_Renderer; 
 
     
     // Start is called before the first frame update
     void Start()
     {
+        m_Renderer = GetComponent<Renderer>();
         //myAudioSource = GetComponent<AudioSource>();
     }
 
@@ -43,5 +45,22 @@ public class Virus : MonoBehaviour
         //    touchPosition.z = 0f;
         //    transform.position = touchPosition;
         //}
+
+        if (m_Renderer.isVisible)
+        {
+            transform.GetComponent<Rigidbody>().AddForce(0.3f * Vector3.forward * Random.value);
+            transform.GetComponent<Rigidbody>().AddForce(0.4f * Vector3.up * Random.value);
+            transform.GetComponent<Rigidbody>().AddForce(0.5f * Vector3.right * Random.value);
+            transform.GetComponent<Rigidbody>().AddForce(0.6f * Vector3.left * Random.value);
+            Debug.Log("Object is visible");
+        }
+        else Debug.Log("Object is no longer visible");
+
+        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+        pos.x = Mathf.Clamp01(pos.x);
+        pos.y = Mathf.Clamp01(pos.y);
+        transform.position = Camera.main.ViewportToWorldPoint(pos);
+
+       //transform.rotation = Random.rotation;
     }
 }
