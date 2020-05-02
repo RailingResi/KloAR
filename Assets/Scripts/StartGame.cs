@@ -1,6 +1,7 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using Vuforia;
 
 public class StartGame : MonoBehaviour
 {
@@ -20,6 +21,14 @@ public class StartGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(isTrackingMarker("CylinderTarget"));
+    }
 
+    private bool isTrackingMarker(string imageTargetName)
+    {
+        var imageTarget = GameObject.Find(imageTargetName);
+        var trackable = imageTarget.GetComponent<TrackableBehaviour>();
+        var status = trackable.CurrentStatus;
+        return status == TrackableBehaviour.Status.TRACKED;
     }
 }
