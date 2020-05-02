@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class UI_Assistent : MonoBehaviour
 {
 
-    [SerializeField] private TextWriter textWriter; 
     //create ref to your text field
     private Text messageText;
     private void Awake()
@@ -17,6 +16,6 @@ public class UI_Assistent : MonoBehaviour
     private void Start()
     {
         //messageText.text = "Hallo liebes Österreich";
-        textWriter.AddWriter(messageText, "Hallo liebes Österreich schön, dass Sie her gefunden haben!", 0.1f, true);
+        TextWriter.AddWriter_Static(messageText, "Hallo liebes Österreich schön, dass Sie her gefunden haben!", 0.1f, true);
     }
 }

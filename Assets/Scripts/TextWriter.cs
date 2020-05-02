@@ -5,25 +5,62 @@ using UnityEngine.UI;
 
 public class TextWriter : MonoBehaviour
 {
-    private Text uiText;
-    private string textToWrite;
-    private int characterIndex; 
-    private float timePerCharacter;
-    private float timer;
-    private bool invisibleCharacters; 
+    private static TextWriter instance;
+    // support multiple text writers
+    private List<TextWriterSingle> textWriterSingleList;
 
-    public void AddWriter(Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters)
+    private void Awake()
     {
-        this.uiText = uiText;
-        this.textToWrite = textToWrite;
-        this.timePerCharacter = timePerCharacter;
-        this.invisibleCharacters = invisibleCharacters;
-        characterIndex = 0;
+        instance = this; 
+        textWriterSingleList = new List<TextWriterSingle>();
+    }
+
+    // no need to set the ref in future - only need to use the static function
+    public static void AddWriter_Static(Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters)
+    {
+        instance.AddWriter(uiText, textToWrite, timePerCharacter, invisibleCharacters);
+    }
+
+    // we have our main class that is resposible to add a new writer 
+    private void AddWriter(Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters)
+    {
+        textWriterSingleList.Add(new TextWriterSingle(uiText, textToWrite, timePerCharacter, invisibleCharacters));
     }
 
     private void Update()
     {
-        if (uiText != null)
+        for (int i = 0; i < textWriterSingleList.Count; i++)
+        {
+            bool destroyInstance = textWriterSingleList[i].Update();
+            if (destroyInstance)
+            {
+                textWriterSingleList.RemoveAt(i);
+                i--;
+            }
+        }
+    }
+
+    //logic is inside the nested class
+    public class TextWriterSingle
+    {
+        private Text uiText;
+        private string textToWrite;
+        private int characterIndex;
+        private float timePerCharacter;
+        private float timer;
+        private bool invisibleCharacters;
+
+        public TextWriterSingle(Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters)
+        {
+            this.uiText = uiText;
+            this.textToWrite = textToWrite;
+            this.timePerCharacter = timePerCharacter;
+            this.invisibleCharacters = invisibleCharacters;
+            characterIndex = 0;
+        }
+
+        // returns true on is complete
+        public bool Update()
         {
             timer -= Time.deltaTime;
             while (timer <= 0)
@@ -43,10 +80,12 @@ public class TextWriter : MonoBehaviour
                 if (characterIndex >= textToWrite.Length)
                 {
                     //Entire string displayed
-                    uiText = null;
-                    return;
+                    return true;
                 }
             }
+
+            return false;
         }
+
     }
 }
