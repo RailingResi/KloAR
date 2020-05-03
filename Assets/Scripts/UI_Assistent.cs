@@ -11,11 +11,13 @@ public class UI_Assistent : MonoBehaviour
     private Text messageText;
     private TextWriter.TextWriterSingle textWriterSingle;
     private AudioSource talkingAudioSource;
+    private Animation talkingAnimation;
 
     private void Awake()
     {
         messageText = transform.Find("Message").Find("Text").GetComponent<Text>();
         talkingAudioSource = transform.Find("TalkingSound").GetComponent<AudioSource>();
+        talkingAnimation = transform.Find("Message").GetComponent<Animation>();
 
         transform.Find("Message").GetComponent<Button_UI>().ClickFunc = () =>
         {
@@ -33,21 +35,23 @@ public class UI_Assistent : MonoBehaviour
                 };
     
                 string message = messageArray[Random.Range(0, messageArray.Length)];
-                StartTalkingSound();
+                StartTalkingSoundAndAnimation();
                 Debug.Log("i am here already without a click");
-                textWriterSingle = TextWriter.AddWriter_Static(messageText, message, 0.1f, true, true, StopTalkingSound);
+                textWriterSingle = TextWriter.AddWriter_Static(messageText, message, 0.1f, true, true, StopTalkingSoundAndAnimation);
             }
         };
     }
 
-    private void StartTalkingSound()
+    private void StartTalkingSoundAndAnimation()
     {
         talkingAudioSource.Play();
+        talkingAnimation.Play();
     }
 
-    private void StopTalkingSound()
+    private void StopTalkingSoundAndAnimation()
     {
         talkingAudioSource.Stop();
+        talkingAnimation.Stop();
     }
 
     private void Start()
