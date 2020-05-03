@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,19 +17,42 @@ public class TextWriter : MonoBehaviour
     }
 
     // no need to set the ref in future - only need to use the static function
-    public static void AddWriter_Static(Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters)
+    public static TextWriterSingle AddWriter_Static(Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters, bool removeWriterBeforeAdd, Action onComplete) 
     {
-        instance.AddWriter(uiText, textToWrite, timePerCharacter, invisibleCharacters);
+        if (removeWriterBeforeAdd)
+        {
+            instance.RemoveWriter(uiText);
+        }
+        return instance.AddWriter(uiText, textToWrite, timePerCharacter, invisibleCharacters, onComplete);
     }
 
     // we have our main class that is resposible to add a new writer 
-    private void AddWriter(Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters)
+    private TextWriterSingle AddWriter(Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters, Action onComplete)
     {
-        textWriterSingleList.Add(new TextWriterSingle(uiText, textToWrite, timePerCharacter, invisibleCharacters));
+        TextWriterSingle textWriterSingle = new TextWriterSingle(uiText, textToWrite, timePerCharacter, invisibleCharacters, onComplete);
+        textWriterSingleList.Add(textWriterSingle);
+        return textWriterSingle;
+    }
+
+    public static void RemoveWriter_Static(Text uiText)
+    {
+        instance.RemoveWriter(uiText);
+    }
+
+    private void RemoveWriter(Text uiText)
+    {
+        // go through the list
+        for (int i = 0; i < textWriterSingleList.Count; i++)
+        {
+            if (textWriterSingleList[i].GetUIText() == uiText)
+            {
+                textWriterSingleList.RemoveAt(i);
+            }
+        }
     }
 
     private void Update()
-    {
+    {   
         for (int i = 0; i < textWriterSingleList.Count; i++)
         {
             bool destroyInstance = textWriterSingleList[i].Update();
@@ -49,13 +73,15 @@ public class TextWriter : MonoBehaviour
         private float timePerCharacter;
         private float timer;
         private bool invisibleCharacters;
+        private Action onComplete;
 
-        public TextWriterSingle(Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters)
+        public TextWriterSingle(Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters, Action onComplete)
         {
             this.uiText = uiText;
             this.textToWrite = textToWrite;
             this.timePerCharacter = timePerCharacter;
             this.invisibleCharacters = invisibleCharacters;
+            this.onComplete = onComplete;
             characterIndex = 0;
         }
 
@@ -80,11 +106,32 @@ public class TextWriter : MonoBehaviour
                 if (characterIndex >= textToWrite.Length)
                 {
                     //Entire string displayed
+                    if (onComplete != null) onComplete();
                     return true;
                 }
             }
 
             return false;
+        }
+
+        public Text GetUIText()
+        {
+            return uiText;
+        }
+
+        public bool IsActive ()
+        {
+            // if there are still characters to write we are active
+            return characterIndex < textToWrite.Length;
+        }
+
+        public void WriteAllAndDestroy()
+        {
+            // we write all the text
+            uiText.text = textToWrite;
+            characterIndex = textToWrite.Length;
+            if (onComplete != null) onComplete();
+            TextWriter.RemoveWriter_Static(uiText);
         }
 
     }
