@@ -253,8 +253,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -0.059000004, y: 0.555, z: -0.36800003}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 306, y: 155}
-  m_SizeDelta: {x: 228.9, y: 98.1}
+  m_AnchoredPosition: {x: 305.8, y: 165.9}
+  m_SizeDelta: {x: 228.7, y: 105.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &159351626
 MonoBehaviour:
@@ -992,6 +992,7 @@ GameObject:
   m_Component:
   - component: {fileID: 889418121}
   - component: {fileID: 889418122}
+  - component: {fileID: 889418123}
   m_Layer: 0
   m_Name: Message
   m_TagString: Untagged
@@ -1007,7 +1008,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 889418120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 87, y: 604, z: 1}
+  m_LocalPosition: {x: 82, y: 556, z: 1}
   m_LocalScale: {x: 0.6574659, y: 0.6574659, z: 0.6574659}
   m_Children:
   - {fileID: 159351625}
@@ -1036,6 +1037,22 @@ MonoBehaviour:
   hoverBehaviour_Move: 0
   hoverBehaviour_Move_Amount: {x: 0, y: 0}
   triggerMouseOutFuncOnClick: 0
+--- !u!111 &889418123
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889418120}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f39b9608c57a544ec8a8cdbcd0d06691, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: f39b9608c57a544ec8a8cdbcd0d06691, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!21 &924239567
 Material:
   serializedVersion: 6
@@ -1282,9 +1299,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 267.9, y: 157.3}
+  m_AnchoredPosition: {x: 260, y: 155}
   m_SizeDelta: {x: 244.8, y: 115.6}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.49999976}
 --- !u!114 &1474171979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1378,7 +1395,7 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 2.22
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0

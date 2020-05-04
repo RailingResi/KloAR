@@ -33,7 +33,8 @@ public class UI_Assistent : MonoBehaviour
                     "Ich bin der Präsident von Österreich",
                     "Bitte helfen Sie mit den Virus zu stoppen!",
                 };
-    
+
+                // random message will be written
                 string message = messageArray[Random.Range(0, messageArray.Length)];
                 StartTalkingSoundAndAnimation();
                 Debug.Log("i am here already without a click");
