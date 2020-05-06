@@ -21,10 +21,10 @@ public class StartGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isTrackingMarker("CylinderTarget"));
+        // Debug.Log(isTrackingMarker("CylinderTarget"));
     }
 
-    private bool isTrackingMarker(string imageTargetName)
+    public static bool isTrackingMarker(string imageTargetName)
     {
         var imageTarget = GameObject.Find(imageTargetName);
         var trackable = imageTarget.GetComponent<TrackableBehaviour>();

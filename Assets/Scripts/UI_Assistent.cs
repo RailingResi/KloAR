@@ -12,12 +12,14 @@ public class UI_Assistent : MonoBehaviour
     private TextWriter.TextWriterSingle textWriterSingle;
     private AudioSource talkingAudioSource;
     private Animation talkingAnimation;
+    private Animation pointingHand; 
 
     private void Awake()
     {
         messageText = transform.Find("Message").Find("Text").GetComponent<Text>();
         talkingAudioSource = transform.Find("TalkingSound").GetComponent<AudioSource>();
         talkingAnimation = transform.Find("Message").GetComponent<Animation>();
+        pointingHand = transform.Find("PointingHand").GetComponent<Animation>();
 
         transform.Find("Message").GetComponent<Button_UI>().ClickFunc = () =>
         {
@@ -27,20 +29,19 @@ public class UI_Assistent : MonoBehaviour
                 textWriterSingle.WriteAllAndDestroy();
             } else
             {
-                string[] messageArray = new string[]
-                {
-                    "Mein Name ist Sebatstian Kurz.",
-                    "Ich bin der Präsident von Österreich",
-                    "Bitte helfen Sie mit den Virus zu stoppen!",
-                };
-
-                // random message will be written
-                string message = messageArray[Random.Range(0, messageArray.Length)];
-                StartTalkingSoundAndAnimation();
-                Debug.Log("i am here already without a click");
-                textWriterSingle = TextWriter.AddWriter_Static(messageText, message, 0.1f, true, true, StopTalkingSoundAndAnimation);
+                LevelOne();         
             }
         };
+    }
+
+    private void LevelOne()
+    {
+        StartTalkingSoundAndAnimation(); ;
+        textWriterSingle = TextWriter.AddWriter_Static(messageText, "Finden Sie zuerst das Target um zu starten!", 0.1f, true, true, StopTalkingSoundAndAnimation);
+        if (StartGame.isTrackingMarker("CylinderTarget")){
+            StartTalkingSoundAndAnimation(); ;
+            textWriterSingle = TextWriter.AddWriter_Static(messageText, "Gut gemacht! Kicken Sie jetzt, mit Berühren des Bildschirms so viele Bakterien wie möglich weg!", 0.1f, true, true, StopTalkingSoundAndAnimation);
+        }
     }
 
     private void StartTalkingSoundAndAnimation()
@@ -57,7 +58,11 @@ public class UI_Assistent : MonoBehaviour
 
     private void Start()
     {
-        //messageText.text = "Hallo liebes Österreich";
-        //TextWriter.AddWriter_Static(messageText, "Hallo liebes Österreich schön, dass Sie her gefunden haben!", 0.1f, true);
+
+        TextWriter.AddWriter_Static(messageText, "Hallo liebes Österreich schön, dass Sie her gefunden haben! (Berühren Sie die Sprechblase um weiter zu machen)", 0.1f, true, true, StopTalkingSoundAndAnimation);
+        if (!talkingAnimation.isPlaying)
+        {
+            pointingHand.Play();
+        }
     }
 }

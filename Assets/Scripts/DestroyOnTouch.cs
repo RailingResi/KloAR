@@ -1,16 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DestroyOnTouch : MonoBehaviour
 {
     public Material hitMaterial;
+    private GameObject timer;
     // Start is called before the first frame update
 
     private void FixedUpdate()
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began)) // when I touch 
         {
+            timer = GameObject.Find("CountDown");
+            var timerScript = timer.AddComponent<Timer>();
+
             RaycastHit hitInfo;
 
             var ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position); // we have a ray that hits anything starting from the camera
