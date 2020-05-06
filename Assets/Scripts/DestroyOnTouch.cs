@@ -7,32 +7,51 @@ public class DestroyOnTouch : MonoBehaviour
 {
     public Material hitMaterial;
     private GameObject timer;
+    bool hit = false;
+    int counter = 0;
     // Start is called before the first frame update
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began)) // when I touch 
-        {
-            timer = GameObject.Find("CountDown");
-            var timerScript = timer.AddComponent<Timer>();
-
-            RaycastHit hitInfo;
-
-            var ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position); // we have a ray that hits anything starting from the camera
-
-            if (Physics.Raycast(ray.origin, ray.direction, out hitInfo, Mathf.Infinity, Physics.DefaultRaycastLayers)) // in the hitInfo I can get the object we hit.
+        if ((Input.touchCount > 0) && (Input.touchCount < 2)){
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                var rig = hitInfo.rigidbody.GetComponent<Rigidbody>();
+                timer = GameObject.Find("CountDown");
+                var timerScript = timer.AddComponent<Timer>();
 
-                if (rig != null)
+                RaycastHit hitInfo;
+
+                var ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position); // we have a ray that hits anything starting from the camera
+
+                if (Physics.Raycast(ray.origin, ray.direction, out hitInfo, Mathf.Infinity, 1 << LayerMask.NameToLayer("Item"))) // in the hitInfo I can get the object we hit.
                 {
-                    Debug.Log(hitMaterial);
-                    Debug.Log(rig.GetComponent<MeshRenderer>().material.ToString());
-                    rig.GetComponent<MeshRenderer>().material = hitMaterial;
-                    rig.AddForceAtPosition(ray.direction, hitInfo.point, ForceMode.VelocityChange);
-                    Destroy(hitInfo.collider.gameObject, 1.0f);
+                    var rig = hitInfo.rigidbody.GetComponent<Rigidbody>();
+                    var collider = hitInfo.collider.GetComponent<SphereCollider>();
+
+                    if (rig != null)
+                    {
+                        rig.AddForceAtPosition(ray.direction, hitInfo.point, ForceMode.VelocityChange);
+                        Destroy(hitInfo.collider.gameObject, 1.0f);
+
+
+                    }
+                    if (hitInfo.collider.gameObject.tag == "virus")
+                    {
+                        hit = true;
+                    }
                 }
             }
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name == "virus")
+        {
+            Debug.Log("TEST");
+            counter += 1;
+        }
+    }
+
+
 }

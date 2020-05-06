@@ -104,6 +104,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Virus Variant
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bf7ce7590fe434b6f8076704840c4860,
+        type: 3}
+      propertyPath: m_TagString
+      value: virus
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bf7ce7590fe434b6f8076704840c4860,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534866581884222612, guid: bf7ce7590fe434b6f8076704840c4860,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: bf7ce7590fe434b6f8076704840c4860,
         type: 3}
       propertyPath: m_LocalPosition.x

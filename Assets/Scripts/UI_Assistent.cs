@@ -12,14 +12,12 @@ public class UI_Assistent : MonoBehaviour
     private TextWriter.TextWriterSingle textWriterSingle;
     private AudioSource talkingAudioSource;
     private Animation talkingAnimation;
-    private Animation pointingHand; 
 
     private void Awake()
     {
         messageText = transform.Find("Message").Find("Text").GetComponent<Text>();
         talkingAudioSource = transform.Find("TalkingSound").GetComponent<AudioSource>();
         talkingAnimation = transform.Find("Message").GetComponent<Animation>();
-        pointingHand = transform.Find("PointingHand").GetComponent<Animation>();
 
         transform.Find("Message").GetComponent<Button_UI>().ClickFunc = () =>
         {
@@ -60,9 +58,5 @@ public class UI_Assistent : MonoBehaviour
     {
 
         TextWriter.AddWriter_Static(messageText, "Hallo liebes Österreich schön, dass Sie her gefunden haben! (Berühren Sie die Sprechblase um weiter zu machen)", 0.1f, true, true, StopTalkingSoundAndAnimation);
-        if (!talkingAnimation.isPlaying)
-        {
-            pointingHand.Play();
-        }
     }
 }

@@ -25,7 +25,6 @@ public class Timer : MonoBehaviour
     {
         currentTime -= 1 * Time.deltaTime;
         countdownTime.text = currentTime.ToString("0");
-        print(currentTime);
 
         if (currentTime <= 10)
         {

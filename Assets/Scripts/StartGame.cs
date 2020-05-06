@@ -2,20 +2,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using Vuforia;
+using UnityEngine.UI;
 
 public class StartGame : MonoBehaviour
 {
     //public Rigidbody myVirus;
     //public List<Rigidbody> VirusAll;
-    
+
+
+    private Text virusHits;
+    int counter = 0;
+
+    private void Awake()
+    {
+        virusHits = GameObject.Find("VirusCounter").GetComponent<Text>();
+        //counter += 1;
+        //virusHits.text = "Hits: " + counter.ToString();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("I am alive and my name is KloAR");
-        //Vector3 pos = new Vector3(0.0f, 0.0f, 0.0f);
-        //Rigidbody newVirus = Instantiate(myVirus, pos, transform.rotation);
-        //VirusAll.Add(newVirus);
     }
 
     // Update is called once per frame
