@@ -8,7 +8,7 @@ public class Virus : MonoBehaviour
     private GameObject go;
     private Transform trans;
     private Rigidbody rb;
-    private float respawnTime = 5f;
+    private float respawnTime = 1f;
 
     private float nextSpawnTime;
 
