@@ -63,7 +63,7 @@ public class StartGame : MonoBehaviour
 
                         if (rig != null)
                         {
-                            rig.AddForceAtPosition(ray.direction, hitInfo.point, ForceMode.VelocityChange);
+                            rig.AddForceAtPosition(ray.direction * 30f, hitInfo.point, ForceMode.VelocityChange);
                             Destroy(hitInfo.collider.gameObject, 1.0f);
 
                         }
