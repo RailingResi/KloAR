@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Vuforia;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class StartGame : MonoBehaviour
 
     private void Awake()
     {
-        virusHits = GameObject.Find("VirusCounter").GetComponent<Text>();
+        //virusHits = GameObject.Find("VirusCounter").GetComponent<Text>();
         //counter += 1;
         //virusHits.text = "Hits: " + counter.ToString();
     }
@@ -23,6 +24,13 @@ public class StartGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Create a temporary reference to the current scene.
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // Retrieve the name of this scene.
+        string sceneName = currentScene.name;
+
+
         Debug.Log("I am alive and my name is KloAR");
     }
 
@@ -38,15 +46,20 @@ public class StartGame : MonoBehaviour
                 {
                     //timer = GameObject.Find("CountDown");
                     //var timerScript = timer.AddComponent<Timer>();
+                    Debug.Log("Ich habe den Screen berührt");
 
                     RaycastHit hitInfo;
 
                     var ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position); // we have a ray that hits anything starting from the camera
 
-                    if (Physics.Raycast(ray.origin, ray.direction, out hitInfo, Mathf.Infinity, 1 << LayerMask.NameToLayer("Item"))) // in the hitInfo I can get the object we hit.
+                    Debug.Log(ray);
+
+                    if (Physics.Raycast(ray.origin, ray.direction, out hitInfo)) // in the hitInfo I can get the object we hit.
                     {
                         var rig = hitInfo.rigidbody.GetComponent<Rigidbody>();
+                        Debug.Log(rig + "> This is the Rigidbody I have touched");
                         var collider = hitInfo.collider.GetComponent<SphereCollider>();
+                        Debug.Log("Hit hit hit ");
 
                         if (rig != null)
                         {
