@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VuforiaUnityInfo version="7.0">
+    <TargetSet version="5.0" toolVersion="2.8.0">
+        <CylinderTarget name="paperroll" version="3.0" targetId="51ebfb065ee84e34abce900573c0511a" sideLength="0.950000" topDiameter="0.400000" bottomDiameter="0.400000" sideImage="paperroll.Body_scaled.jpg" topImage="paperroll.Top_scaled.jpg" bottomImage="paperroll.Bottom_scaled.jpg"/>
+    </TargetSet>
+</VuforiaUnityInfo>
