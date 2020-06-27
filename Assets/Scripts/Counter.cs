@@ -7,7 +7,12 @@ using UnityEngine.UI;
 public class Counter : MonoBehaviour
 {
     private Text countedHits;
-    private float hits = 0f; 
+    private float hits = 0f;
+
+    public float Hits
+    {
+        get => hits;
+    }
 
     private void Awake()
     {
