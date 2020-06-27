@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,8 +7,16 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     private Text countdownTime;
+    bool active = false;
     float currentTime = 0f;
     float startingTime = 60f;
+
+    public event EventHandler TimeIsUp;
+
+    public bool Active
+    {
+        get => active;
+    }
 
     private void Awake()
     {
@@ -17,12 +26,16 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        currentTime = startingTime;
+       // currentTime = startingTime;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!active)
+        {
+            return;
+        }
         currentTime -= 1 * Time.deltaTime;
         countdownTime.text = currentTime.ToString("0");
 
@@ -34,7 +47,15 @@ public class Timer : MonoBehaviour
         if (currentTime <= 0)
         {
             currentTime = 0;
+            TimeIsUp?.Invoke(this, new EventArgs());
+            active = false;
         }
+    }
+
+    public void StartTimer()
+    {
+        active = true;
+        currentTime = startingTime;
     }
 
 }

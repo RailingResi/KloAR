@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using Vuforia;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,8 @@ public class StartGame : MonoBehaviour
 
     private Text virusHits;
     int counter = 0;
+    private GameObject timerGameObject;
+    private Timer timerScript;
 
     private void Awake()
     {
@@ -29,6 +32,10 @@ public class StartGame : MonoBehaviour
             Debug.Log(sceneName + " => Current Scene Name");
             SceneManager.LoadScene("Level2");
         }
+
+        timerGameObject = GameObject.Find("Timer");
+        timerScript = timerGameObject.AddComponent<Timer>();
+        timerScript.TimeIsUp += TimeIsUpHandler;
     }
 
     // Start is called before the first frame update
@@ -54,8 +61,6 @@ public class StartGame : MonoBehaviour
             {
                 if (Input.GetTouch(0).phase == TouchPhase.Began)
                 {
-                    //timer = GameObject.Find("CountDown");
-                    //var timerScript = timer.AddComponent<Timer>();
                     Debug.Log("Ich habe den Screen berührt");
 
                     RaycastHit hitInfo;
@@ -71,6 +76,11 @@ public class StartGame : MonoBehaviour
                         var collider = hitInfo.collider.GetComponent<SphereCollider>();
                         Debug.Log("Hit hit hit ");
 
+                        if (!timerScript.Active)
+                        {
+                            timerScript.StartTimer();
+                        }
+
                         if (rig != null)
                         {
                             rig.AddForceAtPosition(ray.direction * 30f, hitInfo.point, ForceMode.VelocityChange);
@@ -85,6 +95,11 @@ public class StartGame : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void TimeIsUpHandler(object sender, EventArgs e)
+    {
+        Debug.Log("Time is up");
     }
 
     public static bool isTrackingMarker(string imageTargetName)
