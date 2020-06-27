@@ -13,13 +13,14 @@ public class UI_Assistent : MonoBehaviour
     private TextWriter.TextWriterSingle textWriterSingle;
     private AudioSource talkingAudioSource;
     private Animation talkingAnimation;
+    string sceneName; 
     // Create a temporary reference to the current scene.
 
     private void Awake()
     {
         Scene currentScene = SceneManager.GetActiveScene();
         // Retrieve the name of this scene.
-        string sceneName = currentScene.name;
+        sceneName = currentScene.name;
 
         Debug.Log(currentScene + " => Current Scene Manager");
         Debug.Log(sceneName + " => Current Scene Name");
@@ -96,6 +97,15 @@ public class UI_Assistent : MonoBehaviour
 
     private void Start()
     {
-        TextWriter.AddWriter_Static(messageText, "Hallo liebes Österreich schön, dass Sie her gefunden haben! (Berühren Sie die Sprechblase um weiter zu machen)", 0.1f, true, true, StopTalkingSoundAndAnimation);
+        if (sceneName == "Level1")
+        {
+            TextWriter.AddWriter_Static(messageText, "Hallo liebes Österreich schön, dass Sie her gefunden haben! (Berühren Sie die Sprechblase um weiter zu machen)", 0.1f, true, true, StopTalkingSoundAndAnimation);
+        }
+        if (sceneName == "Level2")
+        {
+            TextWriter.AddWriter_Static(messageText, "Super du hast es ins Level 2 geschafft", 0.1f, true, true, StopTalkingSoundAndAnimation);
+        }
+
+
     }
 }

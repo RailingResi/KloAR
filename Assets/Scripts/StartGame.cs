@@ -19,6 +19,16 @@ public class StartGame : MonoBehaviour
         //virusHits = GameObject.Find("VirusCounter").GetComponent<Text>();
         //counter += 1;
         //virusHits.text = "Hits: " + counter.ToString();
+        Scene currentScene = SceneManager.GetActiveScene();
+        // Retrieve the name of this scene.
+        string sceneName = currentScene.name;
+
+        if (currentScene.name != "Level2")
+        {
+            Debug.Log(currentScene + " => Current Scene Manager");
+            Debug.Log(sceneName + " => Current Scene Name");
+            SceneManager.LoadScene("Level2");
+        }
     }
 
     // Start is called before the first frame update
