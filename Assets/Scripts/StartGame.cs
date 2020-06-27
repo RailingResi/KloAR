@@ -14,10 +14,6 @@ public class StartGame : MonoBehaviour
 
     private Text virusHits;
     int counter = 0;
-    private GameObject timerGameObject;
-    private GameObject counterGameObject;
-    private Timer timerScript;
-    private Counter counterScript;
 
     private void Awake()
     {
@@ -34,15 +30,6 @@ public class StartGame : MonoBehaviour
             Debug.Log(sceneName + " => Current Scene Name");
             SceneManager.LoadScene("Level2");
         }
-
-        // get Timer object and add the script to the component, listening for events 'TimesIsUp' then invoking Handler
-        timerGameObject = GameObject.Find("Timer");
-        timerScript = timerGameObject.AddComponent<Timer>();
-        timerScript.TimeIsUp += TimeIsUpHandler;
-
-        // get Counter object and add counter script to the component
-        counterGameObject = GameObject.Find("Counter");
-        counterScript = counterGameObject.AddComponent<Counter>();
     }
 
     // Start is called before the first frame update
@@ -68,6 +55,8 @@ public class StartGame : MonoBehaviour
             {
                 if (Input.GetTouch(0).phase == TouchPhase.Began)
                 {
+                    //timer = GameObject.Find("CountDown");
+                    //var timerScript = timer.AddComponent<Timer>();
                     Debug.Log("Ich habe den Screen berührt");
 
                     RaycastHit hitInfo;
@@ -81,17 +70,12 @@ public class StartGame : MonoBehaviour
                         var rig = hitInfo.rigidbody.GetComponent<Rigidbody>();
                         Debug.Log(rig + "> This is the Rigidbody I have touched");
                         var collider = hitInfo.collider.GetComponent<SphereCollider>();
-
-                        if (!timerScript.Active)
-                        {
-                            timerScript.StartTimer();
-                        }
+                        Debug.Log("Hit hit hit ");
 
                         if (rig != null)
                         {
                             rig.AddForceAtPosition(ray.direction * 30f, hitInfo.point, ForceMode.VelocityChange);
                             Destroy(hitInfo.collider.gameObject, 1.0f);
-                            counterScript.IncrementCount();
 
                         }
                         if (hitInfo.collider.gameObject.tag == "virus")
@@ -102,11 +86,6 @@ public class StartGame : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void TimeIsUpHandler(object sender, EventArgs e)
-    {
-        Debug.Log("Time is up");
     }
 
     public static bool isTrackingMarker(string imageTargetName)
