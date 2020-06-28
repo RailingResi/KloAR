@@ -63,12 +63,28 @@ public class Virus : MonoBehaviour
     void Update()
     {
         
-       /*  if (Time.time >= nextSpawnTime)
+        if (level == "Level1") 
+        {
+            UpdateLevel1();
+        }
+        else if (level == "Level2")
+        {
+            UpdateLevel2();
+        }
+    }
+
+    void UpdateLevel1()
+    {
+    /*  if (Time.time >= nextSpawnTime)
         {
             nextSpawnTime = Time.time + respawnTime;
             rb.AddRelativeForce(new Vector3(0, 0, 0));
         }
  */
+    }
+
+    void UpdateLevel2()
+    {
         if (scaleCount < maxScaleCount) 
         {
             go.transform.localScale += scaleChange;
