@@ -61,6 +61,13 @@ public class StartGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            UpdateLevel2();
+            return;
+        }
+
         // Debug.Log(isTrackingMarker("CylinderTarget"));
         if (isTrackingMarker("CylinderTarget"))
         {
@@ -102,6 +109,11 @@ public class StartGame : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void UpdateLevel2()
+    {
+       
     }
 
     private void TimeIsUpHandler(object sender, EventArgs e)
