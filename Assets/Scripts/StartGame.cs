@@ -114,6 +114,7 @@ public class StartGame : MonoBehaviour
         else
         {
             Debug.Log("Game Over");
+            SceneManager.LoadScene("GameOver");
         }
     }
 
