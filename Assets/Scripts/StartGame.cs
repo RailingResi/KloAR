@@ -19,9 +19,13 @@ public class StartGame : MonoBehaviour
     private Timer timerScript;
     private Counter counterScript;
     private string sceneName;
+    private string level;
 
     private void Awake()
     {
+
+        level = SceneManager.GetActiveScene().name;
+
         //virusHits = GameObject.Find("VirusCounter").GetComponent<Text>();
         //counter += 1;
         //virusHits.text = "Hits: " + counter.ToString();
@@ -56,14 +60,21 @@ public class StartGame : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
 
-        if (SceneManager.GetActiveScene().name == "Level2")
+    private void Update()
+    {
+        if (level == "Level1") 
+        {
+            UpdateLevel1();
+        }
+        else if (level == "Level2")
         {
             UpdateLevel2();
-            return;
         }
+    }
+
+    private void UpdateLevel1()
+    {
 
         // Debug.Log(isTrackingMarker("CylinderTarget"));
         if (isTrackingMarker("CylinderTarget"))
