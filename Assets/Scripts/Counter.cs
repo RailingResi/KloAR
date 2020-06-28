@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Counter : MonoBehaviour
 {
     private Text countedHits;
@@ -19,6 +20,10 @@ public class Counter : MonoBehaviour
         countedHits = this.GetComponent<Text>();
     }
 
+    /// <summary>
+    /// Hits increment when Bacteria touched.
+    /// Author: Theresa
+    /// </summary>
     public void IncrementCount()
     {
         hits += 1f;
