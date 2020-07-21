@@ -21,10 +21,16 @@ public class StartGame : MonoBehaviour
     private string sceneName;
     private string level;
 
+    private bool levelStarted = false;
+
     private void Awake()
     {
 
         level = SceneManager.GetActiveScene().name;
+
+        if (level != "Level2") {
+            SceneManager.LoadScene("Level2");
+        }
 
         //virusHits = GameObject.Find("VirusCounter").GetComponent<Text>();
         //counter += 1;
@@ -114,7 +120,7 @@ public class StartGame : MonoBehaviour
                             }
                             if (hitInfo.collider.gameObject.tag == "virus")
                             {
-                                Debug.Log("TEST THE HIT");
+                                Debug.Log("TEST THE HIT"); 
                             }
                         }
                     }
@@ -125,6 +131,12 @@ public class StartGame : MonoBehaviour
 
     private void UpdateLevel2()
     {
+       if (!levelStarted && !TextWriter.IsActive_Static()) 
+       {
+           levelStarted = true;
+           timerScript.StartTimer();
+       }
+
        
     }
 

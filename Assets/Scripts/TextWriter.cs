@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,21 @@ public class TextWriter : MonoBehaviour
             instance.RemoveWriter(uiText);
         }
         return instance.AddWriter(uiText, textToWrite, timePerCharacter, invisibleCharacters, onComplete);
+    }
+
+    public static bool IsActive_Static()
+    {
+        return instance.textWriterSingleList.Count != 0;
+        
+        var tr = instance.textWriterSingleList.FirstOrDefault(t => t.IsActive());
+        return tr != null ? tr.IsActive() : false;
+
+        if (instance.textWriterSingleList.Count == 0)
+        {
+            return false;
+        }
+        return instance.textWriterSingleList[instance.textWriterSingleList.Count-1].IsActive();
+
     }
 
     // we have our main class that is resposible to add a new writer 

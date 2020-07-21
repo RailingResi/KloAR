@@ -70,7 +70,7 @@ public class UI_Assistent : MonoBehaviour
                 }
                 else
                 {
-                    StartTalkingSoundAndAnimation(); ;
+                    StartTalkingSoundAndAnimation();
                     textWriterSingle = TextWriter.AddWriter_Static(messageText, "TEST TEST TEST!", 0.1f, true, true, StopTalkingSoundAndAnimation);
                     if (StartGame.isTrackingMarker("CylinderTarget"))
                     {
