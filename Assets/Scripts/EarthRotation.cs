@@ -22,7 +22,7 @@ public class EarthRotation : MonoBehaviour
     void Update()
     {
         //Gets the position of your 'Turret' and rotates this gameObject around it by the 'axis' provided at speed 'angle' in degrees per update 
-        transform.RotateAround(Island.transform.position, axis, angle);
-        transform.Rotate(axis, Space.Self);
+        transform.RotateAround(Island.transform.position, axis, angle * Time.deltaTime);
+        transform.Rotate(0, 10 * Time.deltaTime, 0);
     }
 }
