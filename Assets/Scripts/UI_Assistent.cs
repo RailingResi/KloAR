@@ -25,6 +25,27 @@ public class UI_Assistent : MonoBehaviour
         Debug.Log(currentScene + " => Current Scene Manager");
         Debug.Log(sceneName + " => Current Scene Name");
 
+        if (sceneName == "Welcome")
+        {
+            messageText = transform.Find("Message").Find("Text").GetComponent<Text>();
+            talkingAudioSource = transform.Find("TalkingSound").GetComponent<AudioSource>();
+            talkingAnimation = transform.Find("Message").GetComponent<Animation>();
+
+
+            transform.Find("Message").GetComponent<Button_UI>().ClickFunc = () =>
+            {
+                if (textWriterSingle != null && textWriterSingle.IsActive())
+                {
+                    //current active textwriter
+                    textWriterSingle.WriteAllAndDestroy();
+                }
+                else
+                {
+                    StartTalkingSoundAndAnimation(); ;
+                    textWriterSingle = TextWriter.AddWriter_Static(messageText, "Finden Sie den Button und Starten Sie das Spiel!", 0.1f, true, true, StopTalkingSoundAndAnimation);
+                }
+            };
+        }
 
 
         if (sceneName == "Level1")
@@ -97,6 +118,10 @@ public class UI_Assistent : MonoBehaviour
 
     private void Start()
     {
+        if (sceneName == "Welcome" && StartGame.isTrackingMarker("CylinderTarget"))
+        {
+            TextWriter.AddWriter_Static(messageText, "Das ist die Insel Österreich. Durch COVID-19 wurde sie von der Außenwelt abgeschnitten. Hilf mit, sodass wir unseren Platz in der Welt wiederfinden! Starte das Spiel!", 0.1f, true, true, StopTalkingSoundAndAnimation);
+        }
         if (sceneName == "Level1")
         {
             TextWriter.AddWriter_Static(messageText, "Hallo liebes Österreich schön, dass Sie her gefunden haben! (Berühren Sie die Sprechblase um weiter zu machen)", 0.1f, true, true, StopTalkingSoundAndAnimation);

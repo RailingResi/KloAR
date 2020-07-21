@@ -18,45 +18,28 @@ public class StartGame : MonoBehaviour
     private GameObject counterGameObject;
     private Timer timerScript;
     private Counter counterScript;
+    private GameObject kurzPrefab; 
     private string sceneName;
     private string level;
 
     private bool levelStarted = false;
+    private bool kurzSlideIn = false;
 
     private void Awake()
     {
 
         level = SceneManager.GetActiveScene().name;
 
-        if (level != "Level2") {
-            SceneManager.LoadScene("Level2");
-        }
-
-        //virusHits = GameObject.Find("VirusCounter").GetComponent<Text>();
-        //counter += 1;
-        //virusHits.text = "Hits: " + counter.ToString();
-
-
-        // Create a temporary reference to the current scene.
-        Scene currentScene = SceneManager.GetActiveScene();
-        // Retrieve the name of this scene.
-        sceneName = currentScene.name;
-
-        //if (currentScene.name != "Level2")
-        //{
-        //    Debug.Log(currentScene + " => Current Scene Manager");
-        //    Debug.Log(sceneName + " => Current Scene Name");
-        //    SceneManager.LoadScene("Level2");
-        //}
-
+        if (level == "Level1" && level == "Level2") {
         // get Timer object and add the script to the component, listening for events 'TimesIsUp' then invoking Handler
-        timerGameObject = GameObject.Find("Timer");
-        timerScript = timerGameObject.AddComponent<Timer>();
-        timerScript.TimeIsUp += TimeIsUpHandler;
+            timerGameObject = GameObject.Find("Timer");
+            timerScript = timerGameObject.AddComponent<Timer>();
+            timerScript.TimeIsUp += TimeIsUpHandler;
 
-        // get Counter object and add counter script to the component
-        counterGameObject = GameObject.Find("Counter");
-        counterScript = counterGameObject.AddComponent<Counter>();
+            // get Counter object and add counter script to the component
+            counterGameObject = GameObject.Find("Counter");
+            counterScript = counterGameObject.AddComponent<Counter>();
+        }
     }
 
     // Start is called before the first frame update
@@ -69,6 +52,10 @@ public class StartGame : MonoBehaviour
 
     private void Update()
     {
+        //if (level == "Welcome")
+        //{
+        //    UpdateWelcome();
+        //}
         if (level == "Level1") 
         {
             UpdateLevel1();
@@ -126,6 +113,18 @@ public class StartGame : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    private void UpdateWelcome()
+    {
+        Debug.Log("Updating Welcome entry");
+
+        if (!kurzSlideIn && isTrackingMarker("CylinderTarget"))
+        {
+            Debug.Log("Updating Welcome");
+            kurzPrefab = Instantiate(Resources.Load("Prefabs/CanvasWithAssistent")) as GameObject;
+            kurzSlideIn = true;
         }
     }
 
