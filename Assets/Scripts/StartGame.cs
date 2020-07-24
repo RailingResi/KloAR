@@ -18,10 +18,10 @@ public class StartGame : MonoBehaviour
     private GameObject counterGameObject;
     private Timer timerScript;
     private Counter counterScript;
-    private GameObject kurzPrefab; 
+    private GameObject kurzPrefab;
+    private GameObject vb_button;
     private string sceneName;
     private string level;
-
     private bool levelStarted = false;
     private bool kurzSlideIn = false;
 
@@ -38,6 +38,7 @@ public class StartGame : MonoBehaviour
 
             // get Counter object and add counter script to the component
             counterGameObject = GameObject.Find("Counter");
+            vb_button = GameObject.Find("ButtonText");
             counterScript = counterGameObject.AddComponent<Counter>();
         }
     }
@@ -63,6 +64,18 @@ public class StartGame : MonoBehaviour
         else if (level == "Level2")
         {
             UpdateLevel2();
+        }
+    }
+
+    private void UpdateWelcome()
+    {
+        Debug.Log("Updating Welcome entry");
+
+        if (!kurzSlideIn && isTrackingMarker("CylinderTarget"))
+        {
+            Debug.Log("Updating Welcome");
+            kurzPrefab = Instantiate(Resources.Load("Prefabs/CanvasWithAssistent")) as GameObject;
+            kurzSlideIn = true;
         }
     }
 
@@ -116,18 +129,6 @@ public class StartGame : MonoBehaviour
         }
     }
 
-    private void UpdateWelcome()
-    {
-        Debug.Log("Updating Welcome entry");
-
-        if (!kurzSlideIn && isTrackingMarker("CylinderTarget"))
-        {
-            Debug.Log("Updating Welcome");
-            kurzPrefab = Instantiate(Resources.Load("Prefabs/CanvasWithAssistent")) as GameObject;
-            kurzSlideIn = true;
-        }
-    }
-
     private void UpdateLevel2()
     {
        if (!levelStarted && !TextWriter.IsActive_Static()) 
@@ -145,12 +146,20 @@ public class StartGame : MonoBehaviour
         if (counterScript.Hits > 20)
         {
             Debug.Log("Well done!");
+            if (level == "level1")
+            {
+                vb_button.GetComponent<TextMesh>().text = "Level2 starten";
+            }
         }
         else
         {
             Debug.Log("Game Over");
-            SceneManager.LoadScene("GameOver");
-        }
+            if (level == "GameOver")
+            {
+                vb_button.GetComponent<TextMesh>().text = "Erneut versuchen";
+            }
+            
+         }
     }
 
     public static bool isTrackingMarker(string imageTargetName)

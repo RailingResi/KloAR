@@ -75,12 +75,12 @@ public class Virus : MonoBehaviour
 
     void UpdateLevel1()
     {
-    /*  if (Time.time >= nextSpawnTime)
+        if (Time.time >= nextSpawnTime)
         {
             nextSpawnTime = Time.time + respawnTime;
             rb.AddRelativeForce(new Vector3(0, 0, 0));
         }
- */
+
     }
 
     void UpdateLevel2()

@@ -9,9 +9,6 @@ public class DestroyOnTouch : MonoBehaviour
     private GameObject timer;
     bool hit = false;
     int counter = 0;
-    // Start is called before the first frame update
-
-    
 
     private void Update()
     {

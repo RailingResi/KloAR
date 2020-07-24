@@ -28,7 +28,15 @@ public class VirtualButton : MonoBehaviour
         }
         if (level == "Level1")
         {
-            SceneManager.LoadScene("Level2");
+            string text = vBtnObject.GetComponent<TextMesh>().text;
+            if (text == "Erneut versuchen")
+            {
+                SceneManager.LoadScene("Level2");
+            }
+            else if (text == "Level2 Starten")
+            {
+                SceneManager.LoadScene("Level2");
+            }
         }
         if (level == "Level2")
         {

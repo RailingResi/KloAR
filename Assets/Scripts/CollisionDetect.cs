@@ -13,16 +13,4 @@ public class CollisionDetect : MonoBehaviour
         GameObject.Find("Counter").GetComponent<Text>().text = "collided " + collisionCount;
 
     }
-  
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
 }
