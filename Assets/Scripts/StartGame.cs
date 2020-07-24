@@ -20,7 +20,6 @@ public class StartGame : MonoBehaviour
     private Counter counterScript;
     private GameObject kurzPrefab;
     private GameObject vb_button;
-    private string sceneName;
     private string level;
     private bool levelStarted = false;
     private bool kurzSlideIn = false;
@@ -29,11 +28,12 @@ public class StartGame : MonoBehaviour
     {
 
         level = SceneManager.GetActiveScene().name;
-
-        if (level == "Level1" && level == "Level2") {
-        // get Timer object and add the script to the component, listening for events 'TimesIsUp' then invoking Handler
+        Debug.Log("I AM AWAKE");
+        if (level == "Level1" || level == "Level2") {
+            // get Timer object and add the script to the component, listening for events 'TimesIsUp' then invoking Handler
             timerGameObject = GameObject.Find("Timer");
             timerScript = timerGameObject.AddComponent<Timer>();
+            Debug.Log("Timer: " + timerScript);
             timerScript.TimeIsUp += TimeIsUpHandler;
 
             // get Counter object and add counter script to the component
@@ -86,8 +86,9 @@ public class StartGame : MonoBehaviour
         if (isTrackingMarker("CylinderTarget"))
         {
             //Level 1: touching Bakteria and shoot them away
-            if (sceneName == "Level1")
+            if (level == "Level1")
             {
+                Debug.Log("HEEEEEEEEEE I AM IN LEVEL 1");
                 if ((Input.touchCount > 0) && (Input.touchCount < 2))
                 {
                     if (Input.GetTouch(0).phase == TouchPhase.Began)
@@ -105,7 +106,8 @@ public class StartGame : MonoBehaviour
                             var rig = hitInfo.rigidbody.GetComponent<Rigidbody>();
                             Debug.Log(rig + "> This is the Rigidbody I have touched");
                             var collider = hitInfo.collider.GetComponent<SphereCollider>();
-
+                            Debug.Log("Collider: " + collider);
+                           
                             if (!timerScript.Active)
                             {
                                 timerScript.StartTimer();
@@ -146,7 +148,7 @@ public class StartGame : MonoBehaviour
         if (counterScript.Hits > 20)
         {
             Debug.Log("Well done!");
-            if (level == "level1")
+            if (level == "Level1")
             {
                 vb_button.GetComponent<TextMesh>().text = "Level2 starten";
             }
