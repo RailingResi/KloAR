@@ -9,12 +9,14 @@ using UnityEngine.SceneManagement;
 public class VirtualButton : MonoBehaviour
 {
     public GameObject vBtnObject;
+    public GameObject vBtnObjectText;
     private string level;
     // Start is called before the first frame update
     void Start()
     {
         level = SceneManager.GetActiveScene().name;
         vBtnObject = GameObject.Find("VirtualButton");
+        vBtnObjectText = GameObject.Find("ButtonText");
         vBtnObject.GetComponent<VirtualButtonBehaviour>().RegisterOnButtonPressed(OnButtonPressed);
         vBtnObject.GetComponent<VirtualButtonBehaviour>().RegisterOnButtonPressed(OnButtonReleased);
     }
@@ -28,12 +30,13 @@ public class VirtualButton : MonoBehaviour
         }
         if (level == "Level1")
         {
-            string text = vBtnObject.GetComponent<TextMesh>().text;
-            if (text == "Erneut versuchen")
+            string text = vBtnObjectText.GetComponent<TextMesh>().text;
+            Debug.Log("Buttontext: " + text);
+            if (text == "Retry")
             {
-                SceneManager.LoadScene("Level2");
+                SceneManager.LoadScene("Level1");
             }
-            else if (text == "Level2 Starten")
+            else if (text == "Next Level")
             {
                 SceneManager.LoadScene("Level2");
             }

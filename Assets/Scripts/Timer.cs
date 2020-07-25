@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
     private Text countdownTime;
     bool active = false;
     float currentTime = 0f;
-    float startingTime = 60f;
+    float startingTime = 5f;
 
     public event EventHandler TimeIsUp;
 
@@ -36,7 +36,7 @@ public class Timer : MonoBehaviour
         {
             return;
         }
-        currentTime -= 1 * Time.deltaTime;
+        currentTime -= 2 * Time.deltaTime;
         countdownTime.text = currentTime.ToString("0");
 
         if (currentTime <= 10)

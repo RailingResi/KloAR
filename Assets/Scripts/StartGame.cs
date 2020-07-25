@@ -150,15 +150,15 @@ public class StartGame : MonoBehaviour
             Debug.Log("Well done!");
             if (level == "Level1")
             {
-                vb_button.GetComponent<TextMesh>().text = "Level2 starten";
+                vb_button.GetComponent<TextMesh>().text = "Next Level";
             }
         }
         else
         {
             Debug.Log("Game Over");
-            if (level == "GameOver")
+            if (level == "Level1")
             {
-                vb_button.GetComponent<TextMesh>().text = "Erneut versuchen";
+                vb_button.GetComponent<TextMesh>().text = "Retry";
             }
             
          }

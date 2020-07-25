@@ -811,7 +811,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virusPrefab: {fileID: 522179474705393934, guid: 43d86b0fb5ae94357a5b63296e745e7f,
     type: 3}
-  virusPrefabLevel1: {fileID: 0}
+  virusPrefabLevel1: {fileID: 522179474705393934, guid: e90c30f3dd00b4460b575b78a2fb934b,
+    type: 3}
 --- !u!4 &323187268
 Transform:
   m_ObjectHideFlags: 0
@@ -2768,7 +2769,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virusPrefab: {fileID: 522179474705393934, guid: 43d86b0fb5ae94357a5b63296e745e7f,
     type: 3}
-  virusPrefabLevel1: {fileID: 0}
+  virusPrefabLevel1: {fileID: 522179474705393934, guid: e90c30f3dd00b4460b575b78a2fb934b,
+    type: 3}
 --- !u!4 &1751123157
 Transform:
   m_ObjectHideFlags: 0
@@ -2814,7 +2816,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virusPrefab: {fileID: 522179474705393934, guid: 43d86b0fb5ae94357a5b63296e745e7f,
     type: 3}
-  virusPrefabLevel1: {fileID: 0}
+  virusPrefabLevel1: {fileID: 522179474705393934, guid: e90c30f3dd00b4460b575b78a2fb934b,
+    type: 3}
 --- !u!4 &1762967840
 Transform:
   m_ObjectHideFlags: 0
@@ -2860,7 +2863,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virusPrefab: {fileID: 522179474705393934, guid: 43d86b0fb5ae94357a5b63296e745e7f,
     type: 3}
-  virusPrefabLevel1: {fileID: 0}
+  virusPrefabLevel1: {fileID: 522179474705393934, guid: e90c30f3dd00b4460b575b78a2fb934b,
+    type: 3}
 --- !u!4 &1810477438
 Transform:
   m_ObjectHideFlags: 0
