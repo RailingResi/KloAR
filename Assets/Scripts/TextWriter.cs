@@ -1,4 +1,19 @@
-﻿using System;
+﻿/* 
+    ------------------- TextWriter.cs -------------------
+
+    Theresa Hoeck, Isabella Horn, 25.July 2020:
+    Well the TextWriter.cs focus on writting text within
+    the UI Assistent Bubble. It was implemented as a singlton
+    so that we only have one instance of the object in the
+    game. We can therefor reuse it from scene to scene.
+    The reference to that code sample is:
+    https://www.youtube.com/watch?v=ZVh4nH8Mayg
+    I used this tutorial as a template.
+
+    --------------------------------------------------
+ */
+
+using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -113,7 +128,7 @@ public class TextWriter : MonoBehaviour
                 string text = textToWrite.Substring(0, characterIndex);
                 if (invisibleCharacters)
                 {
-                    //rgb = red, green, blue, alpha
+                    //rgb = red, green, blue, alpha => setting chars invisible to that the size of the box fits.
                     text += "<color=#00000000>" + textToWrite.Substring(characterIndex) + "</color>";
                 }
                 uiText.text = text;

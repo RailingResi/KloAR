@@ -1,14 +1,16 @@
 ﻿/* 
-    ------------------- Virus.cs -------------------
+    ------------------- UI_Assistent.cs -------------------
 
-    Theresa Hoeck, Isabella Horn, 25.July 2020:
-    Virus.cs is the script assigned to the Virus Prefabs.
-    Those prefabs are floating arround in all three levels.
-    The time of their floating time is in a range between
-    10 and twenty second. The exact time was choosen to be
-    set randomly. In Level1 the Virus Particles have just a force
-    assigned. In Level2 they were chosen to be scaled up. 
-    In Level 3 ... 
+    Theresa Hoeck, 25.July 2020:
+    The UI Assistant GameObject consists of other 3 GameObjects.
+    Message, ImageOfPresisdent and TalkingSound. Whereas the message
+    can be separated again into Bubble and Text GameObjects.
+    The UI Assistant leads the Player through the Game by telling
+    him what to do next. The UI Assistant has a Chickmunk sound and
+    an animation assigned. The UI Assistant uses a TextWriter Class
+    that makes the text typed letter by letter, fitting perfectly into
+    the message bubble and make the text typing finished fast on
+    touching the bubble once more. 
 
     --------------------------------------------------
  */
@@ -89,6 +91,7 @@ public class UI_Assistent : MonoBehaviour
                 }
             };
         }
+        //Isabella Horn
         else if (sceneName == "Level2")
         {
             Debug.Log("Ich bin im zweiten Level");

@@ -1,4 +1,21 @@
-﻿using UnityEngine;
+﻿/* 
+    ------------------- StartGame.cs -------------------
+
+    Theresa Hoeck, Isabella Horn, 25.July 2020:
+    The StartGame.cs was initially used as
+    the Games 'Logic'. It is assigned to the cylinderTarget.
+    Here I implemented in UpdateLevel1 the Raycasting
+    for hitting bakterias. We can check if the time ran
+    out with the TimeisUpHandler. Within the Timer.cs
+    Script we invoke an Time is up event what we consume
+    if we want to know if the time is up. Depending on the score
+    and if time is up we then set the new text to the Virtual Button
+    in order to switch to the right sceen. 
+
+    --------------------------------------------------
+ */
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
