@@ -1,4 +1,19 @@
-﻿using System.Collections;
+﻿/* 
+    ------------------- Timer.cs -------------------
+
+    Theresa Hoeck, 25.July 2020:
+    The Timer Script is assigned to the timer when the
+    StartGame.cs is starting. The time starts running
+    when the Target is tracked and the screen is touched the
+    first time. The starting Time can be set in a variable by seconds.
+    The timers speed is two times the Time.deltaTime.
+    In the last 20 seconds the text turns red to make the
+    user husseling. 
+
+    --------------------------------------------------
+ */
+
+using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;

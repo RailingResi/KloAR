@@ -1,4 +1,14 @@
-﻿using System.Collections;
+﻿/* 
+    ------------------- Island.cs -------------------
+
+    Theresa Hoeck, 25.July 2020:
+    In Level one it is important to count the hit of
+    hit bakteria. This is what happens here. The IncrementCount()
+    Funktion is invoked on every hit bakteria. 
+
+    --------------------------------------------------
+ */
+using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;

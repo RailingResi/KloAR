@@ -8,10 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
-    //public Rigidbody myVirus;
-    //public List<Rigidbody> VirusAll;
-
-
     private Text virusHits;
     int counter = 0;
     private GameObject timerGameObject;

@@ -1,4 +1,20 @@
-﻿using System.Collections;
+﻿/* 
+    ------------------- Spawner.cs -------------------
+
+    Theresa Hoeck, 25.July 2020:
+    As the name already implies the spwaner script is
+    responsible for spawning the bakterias in a room.
+    There are four position in the world space of the game.
+    So four spawners that only spread bakterias in the room.
+    The position of the Spawners are from -10 to 10 on x and
+    z axis. The bakterias are prefabs that are Instantiated.
+    Depending on the level we have different prefabs, since
+    they have different components assigned. 
+
+    --------------------------------------------------
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; 

@@ -1,4 +1,13 @@
-﻿using System.Collections;
+﻿/* 
+    ------------------- Island.cs -------------------
+
+    Theresa Hoeck, 25.July 2020:
+    Slide In animation of Shorty UI Assistent.
+
+    --------------------------------------------------
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,11 +25,5 @@ public class Canvas : MonoBehaviour
     void Start()
     {
         slideInAnimation.Play();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -1,4 +1,16 @@
-﻿using System.Collections;
+﻿/* 
+    ------------------- VirtualButton.cs -------------------
+
+    Theresa Hoeck, 25.July 2020:
+    The Virtual Button has the responsability if triggering the
+    change between the sceens. Depending on the Text and the Level of
+    the current seen and of the button we can choose what
+    sceen has to be loaded next.
+
+    --------------------------------------------------
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Vuforia;

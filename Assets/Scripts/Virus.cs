@@ -1,4 +1,19 @@
-﻿using System.Collections;
+﻿/* 
+    ------------------- Virus.cs -------------------
+
+    Theresa Hoeck, Isabella Horn, 25.July 2020:
+    Virus.cs is the script assigned to the Virus Prefabs.
+    Those prefabs are floating arround in all three levels.
+    The time of their floating time is in a range between
+    10 and twenty second. The exact time was choosen to be
+    set randomly. In Level1 the Virus Particles have just a force
+    assigned. In Level2 they were chosen to be scaled up. 
+    In Level 3 ... 
+
+    --------------------------------------------------
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -73,6 +88,7 @@ public class Virus : MonoBehaviour
         }
     }
 
+    // Theresa Höck
     void UpdateLevel1()
     {
         if (Time.time >= nextSpawnTime)
@@ -83,6 +99,7 @@ public class Virus : MonoBehaviour
 
     }
 
+    // Isabella Horn
     void UpdateLevel2()
     {
         if (scaleCount < maxScaleCount) 

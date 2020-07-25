@@ -1,4 +1,14 @@
-﻿using System.Collections;
+﻿/* 
+    ------------------- Island.cs -------------------
+
+    Theresa Hoeck, 25.July 2020:
+    The Earth that is rotating around the island Austria.
+    This is defined here.
+
+    --------------------------------------------------
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

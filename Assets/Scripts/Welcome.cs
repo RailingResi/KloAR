@@ -1,4 +1,18 @@
-﻿using System.Collections;
+﻿/* 
+    ------------------- Welcome.cs -------------------
+
+    Theresa Hoeck, 25.July 2020:
+    Welcome.cs is executed in the Welcome scene.
+    It is the very first sceen after loading the game.
+    Here we check at first if the UI Assistent is
+    Slided In. If not the the Target is tracked we
+    Instantiate the Prefab and the UI Assistent SlidesIn.
+    The UI Assistent then gives further Introduction how
+    the user can move on to the next level.
+
+    --------------------------------------------------
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Vuforia;
@@ -32,7 +46,7 @@ public class Welcome : MonoBehaviour
 
         if (!kurzSlideIn && isTrackingMarker("CylinderTarget"))
         {
-            Debug.Log("Updating Welcome");
+            // Instantiate the UI Assistent Prefab. 
             kurzPrefab = Instantiate(Resources.Load("Prefabs/CanvasWithAssistent", typeof(GameObject))) as GameObject;
             kurzSlideIn = true;
         }

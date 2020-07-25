@@ -1,4 +1,14 @@
-﻿using System.Collections;
+﻿/* 
+    ------------------- Island.cs -------------------
+
+    Theresa Hoeck, 25.July 2020:
+    The Island in the Welcome Sceen is rotating
+    a little around its own axis. 
+
+    --------------------------------------------------
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
