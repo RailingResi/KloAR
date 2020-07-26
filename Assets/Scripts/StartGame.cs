@@ -36,10 +36,17 @@ public class StartGame : MonoBehaviour
     private string level;
     private bool levelStarted = false;
     private bool kurzSlideIn = false;
+    private int collisionCount = 0;
 
     private void Awake()
     {
 
+        // just for deploment of level2 - do not commit!
+        if (!(SceneManager.GetActiveScene().name == "Level2")) {
+            SceneManager.LoadScene("Level2");
+        }
+
+    
         level = SceneManager.GetActiveScene().name;
         Debug.Log("I AM AWAKE");
         if (level == "Level1" || level == "Level2") {
@@ -48,12 +55,18 @@ public class StartGame : MonoBehaviour
             timerScript = timerGameObject.AddComponent<Timer>();
             Debug.Log("Timer: " + timerScript);
             timerScript.TimeIsUp += TimeIsUpHandler;
+            timerScript.TimeIsUp += TimeIsUpHandlerLevel2;
+
 
             // get Counter object and add counter script to the component
             counterGameObject = GameObject.Find("Counter");
             vb_button = GameObject.Find("ButtonText");
             counterScript = counterGameObject.AddComponent<Counter>();
         }
+
+       /*  if (level == "Level2") {
+            timerScript.StartTimer();
+        } */
     }
 
     // Start is called before the first frame update
@@ -149,7 +162,11 @@ public class StartGame : MonoBehaviour
        if (!levelStarted && !TextWriter.IsActive_Static()) 
        {
            levelStarted = true;
-           timerScript.StartTimer();
+
+           if (!timerScript.Active) 
+           {
+                timerScript.StartTimer();
+           }
        }
 
        
@@ -175,6 +192,35 @@ public class StartGame : MonoBehaviour
             }
             
          }
+    }
+
+    private void TimeIsUpHandlerLevel2(object sender, EventArgs e)
+    {
+        Debug.Log("Time is up");
+        if (collisionCount <= 10)
+        {
+            Debug.Log("Well done!");
+            if (level == "Level2")
+            {
+                vb_button.GetComponent<TextMesh>().text = "Next Level";
+            }
+        }
+        else
+        {
+            Debug.Log("Game Over");
+            if (level == "Level2")
+            {
+                vb_button.GetComponent<TextMesh>().text = "Retry";
+            }
+            
+         }
+    }
+
+    public void OnLevel2BacteraCollection() 
+    {
+        Debug.Log("collisionscript");
+        collisionCount++;
+        GameObject.Find("Counter").GetComponent<Text>().text = "Hits: " + collisionCount;
     }
 
     public static bool isTrackingMarker(string imageTargetName)

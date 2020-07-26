@@ -35,6 +35,7 @@ public class VirtualButton : MonoBehaviour
 
     public void OnButtonPressed(VirtualButtonBehaviour vb)
     {
+
         Debug.Log("Button Pressed");
         if (level == "Welcome")
         {

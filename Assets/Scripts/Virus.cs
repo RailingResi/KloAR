@@ -57,6 +57,10 @@ public class Virus : MonoBehaviour
         {
             StartLevel2();
         }
+         else if (level == "Level3")
+        {
+            StartLevel2();
+        }
     }
 
     void StartLevel1()
@@ -75,6 +79,14 @@ public class Virus : MonoBehaviour
         Object.Destroy(go, number);
     }
 
+     void StartLevel3()
+    {
+        //set initial velocity
+        rb.AddRelativeForce(new Vector3(0, 15, 0));
+        float number = Random.Range(10.0f, 15.0f);
+        Object.Destroy(go, number);
+    }
+
     void Update()
     {
         
@@ -85,6 +97,10 @@ public class Virus : MonoBehaviour
         else if (level == "Level2")
         {
             UpdateLevel2();
+        }
+        else if (level == "Level3")
+        {
+            UpdateLevel3();
         }
     }
 
@@ -101,6 +117,16 @@ public class Virus : MonoBehaviour
 
     // Isabella Horn
     void UpdateLevel2()
+    {
+        if (scaleCount < maxScaleCount) 
+        {
+            go.transform.localScale += scaleChange;
+            go.transform.localScale += positionChange;
+            scaleCount++;
+        }
+    }
+
+    void UpdateLevel3()
     {
         if (scaleCount < maxScaleCount) 
         {

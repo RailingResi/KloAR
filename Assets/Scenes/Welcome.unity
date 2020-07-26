@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vBtnObject: {fileID: 1328769719}
+  vBtnObjectText: {fileID: 0}
 --- !u!33 &367385402
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -307,6 +308,7 @@ MonoBehaviour:
   mTrackableName: button
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/KloAR.xml
+  mPreserveChildSize: 0
   mAspectRatio: 0.3613899
   mImageTargetType: 0
   mWidth: 14.5
@@ -726,6 +728,7 @@ GameObject:
   - component: {fileID: 1323971143}
   - component: {fileID: 1323971142}
   - component: {fileID: 1323971141}
+  - component: {fileID: 1323971148}
   m_Layer: 0
   m_Name: CylinderTarget
   m_TagString: Untagged
@@ -752,7 +755,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323971140}
-  m_Mesh: {fileID: 2050297590}
+  m_Mesh: {fileID: 2019120961}
 --- !u!23 &1323971143
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -847,6 +850,7 @@ MonoBehaviour:
   mTrackableName: paperroll
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/KloAR.xml
+  mPreserveChildSize: 0
   mTopDiameterRatio: 0.42105263
   mBottomDiameterRatio: 0.42105263
   mSideLength: 0.95
@@ -867,6 +871,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1323971148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323971140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb46ea46fbc56441dbc47eac929f2e85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1328769719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,13 +1586,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &2050297590
+--- !u!43 &2019120961
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CylinderMesh14864
+  m_Name: CylinderMesh28810
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1797,6 +1813,7 @@ GameObject:
   - component: {fileID: 2075999761}
   - component: {fileID: 2075999760}
   - component: {fileID: 2075999765}
+  - component: {fileID: 2075999766}
   m_Layer: 0
   m_Name: ARCamera
   m_TagString: MainCamera
@@ -1909,6 +1926,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kurzPrefab: {fileID: 1111589968407334569, guid: eb414f522407f40b7a8ef2a825db99e7,
     type: 3}
+--- !u!114 &2075999766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075999759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb46ea46fbc56441dbc47eac929f2e85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2085226938
 PrefabInstance:
   m_ObjectHideFlags: 0

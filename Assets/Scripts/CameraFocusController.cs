@@ -1,4 +1,17 @@
-﻿using System.Collections;
+﻿/* 
+    ------------------- CameraFocusController.cs -------------------
+
+    Isabella Horn, 25.July 2020:
+     On my Xiaomi Android device I had the problem
+     that the camera did not focus automatically 
+     and therefore the target was not recognized. 
+     This script guarantees that the focus is on the target 
+     and when the app is resumed then set autofocus again
+
+    --------------------------------------------------
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
