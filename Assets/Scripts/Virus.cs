@@ -59,7 +59,7 @@ public class Virus : MonoBehaviour
         }
          else if (level == "Level3")
         {
-            StartLevel2();
+            StartLevel3();
         }
     }
 

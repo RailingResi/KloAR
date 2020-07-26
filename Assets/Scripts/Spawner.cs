@@ -24,6 +24,8 @@ public class Spawner : MonoBehaviour
    
     public GameObject virusPrefab;
     public GameObject virusPrefabLevel1;
+    public GameObject mask;
+    private List<GameObject> masks;
     private List<GameObject> virusParicles; 
     private float respawnTime = 2f;
     private string level; 
@@ -65,6 +67,16 @@ public class Spawner : MonoBehaviour
                         transform.rotation);
                     virusParicles.Add(Virus);
                 }
+                /* if (level == "Level3")
+                {
+                     mask.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
+
+                    GameObject Mask = GameObject.Instantiate(
+                        mask,
+                        transform.position + new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-10.0f, 10.0f), Random.value),
+                        transform.rotation);
+                    masks.Add(Mask);
+                } */
             }
         }
     }
