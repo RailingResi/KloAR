@@ -42,7 +42,7 @@ public class StartGame : MonoBehaviour
     private void Awake()
     {
 
-        
+       
     
         level = SceneManager.GetActiveScene().name;
         Debug.Log("I AM AWAKE");
@@ -265,6 +265,14 @@ public class StartGame : MonoBehaviour
         flash.DoFlash();
         Debug.Log("collisionscript");
         collisionCount++;
+        GameObject.Find("Counter").GetComponent<Text>().text = "Hits: " + collisionCount;
+    }
+
+    public void MaskCollision() 
+    {
+        flash.DoFlashGreen();
+        Debug.Log("collisionscript");
+        collisionCount--;
         GameObject.Find("Counter").GetComponent<Text>().text = "Hits: " + collisionCount;
     }
 
