@@ -37,6 +37,7 @@ public class StartGame : MonoBehaviour
     private bool levelStarted = false;
     private bool kurzSlideIn = false;
     private int collisionCount = 0;
+    private flashOnCollision flash;
 
     private void Awake()
     {
@@ -45,7 +46,6 @@ public class StartGame : MonoBehaviour
         if (!(SceneManager.GetActiveScene().name == "Level2")) {
             SceneManager.LoadScene("Level2");
         }
-
     
         level = SceneManager.GetActiveScene().name;
         Debug.Log("I AM AWAKE");
@@ -63,6 +63,12 @@ public class StartGame : MonoBehaviour
             vb_button = GameObject.Find("ButtonText");
             counterScript = counterGameObject.AddComponent<Counter>();
         }
+
+        if (level == "Level2")
+        {
+            flash = GameObject.Find("ScreenTint").GetComponent<flashOnCollision>();
+        }
+
 
        /*  if (level == "Level2") {
             timerScript.StartTimer();
@@ -218,6 +224,7 @@ public class StartGame : MonoBehaviour
 
     public void OnLevel2BacteraCollection() 
     {
+        flash.DoFlash();
         Debug.Log("collisionscript");
         collisionCount++;
         GameObject.Find("Counter").GetComponent<Text>().text = "Hits: " + collisionCount;
