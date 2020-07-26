@@ -6,21 +6,22 @@
 "/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/Button_UI.cs", "C#", 0, 0, 155, 0, 23, 27, 205
 "/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/CameraFocusController.cs", "C#", 0, 0, 23, 0, 14, 10, 47
 "/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/Canvas.cs", "C#", 0, 0, 15, 0, 9, 6, 30
-"/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/CollisionDetect.cs", "C#", 0, 0, 18, 0, 10, 7, 35
+"/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/CollisionDetect.cs", "C#", 0, 0, 22, 0, 32, 8, 62
 "/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/Counter.cs", "C#", 0, 0, 23, 0, 14, 7, 44
 "/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/EarthRotation.cs", "C#", 0, 0, 17, 0, 16, 6, 39
 "/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/Island.cs", "C#", 0, 0, 10, 0, 10, 3, 23
 "/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/Spawner.cs", "C#", 0, 0, 49, 0, 16, 7, 72
-"/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/StartGame.cs", "C#", 0, 0, 139, 0, 27, 28, 194
+"/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/StartGame.cs", "C#", 0, 0, 211, 0, 30, 41, 282
 "/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/TextWriter.cs", "C#", 0, 0, 122, 0, 25, 23, 170
 "/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/Timer.cs", "C#", 0, 0, 48, 0, 17, 12, 77
-"/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/UI_Assistent.cs", "C#", 0, 0, 111, 0, 23, 21, 155
+"/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/UI_Assistent.cs", "C#", 0, 0, 139, 0, 24, 24, 187
 "/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/VirtualButton.cs", "C#", 0, 0, 49, 0, 12, 7, 68
 "/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/Virus.cs", "C#", 0, 0, 101, 0, 20, 18, 139
 "/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/Welcome.cs", "C#", 0, 0, 39, 0, 17, 7, 63
+"/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/flashOnCollision.cs", "C#", 0, 0, 37, 0, 9, 16, 62
 "/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/StreamingAssets/Vuforia/KloAR.xml", "XML", 0, 0, 0, 7, 0, 1, 8
 "/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/StreamingAssets/Vuforia/VuforiaMars_Images.xml", "XML", 0, 0, 0, 24, 0, 1, 25
 "/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/StreamingAssets/Vuforia/VuforiaMars_ModelTarget.xml", "XML", 0, 0, 0, 13, 0, 7, 20
 "/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Packages/manifest.json", "JSON", 0, 54, 0, 0, 0, 1, 55
 "/Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/README.md", "Markdown", 10, 0, 0, 0, 0, 1, 11
-"Total", "-", 10, 54, 1077, 69, 253, 264, 1727
+"Total", "-", 10, 54, 1218, 69, 288, 297, 1936

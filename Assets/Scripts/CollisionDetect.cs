@@ -1,5 +1,5 @@
 ﻿/* 
-    ------------------- CollisionDetect.cs -------------------
+    ------------------- CollisionDetect.cs -----------
 
     Isabella Horn, 25.July 2020:
     For Level2 and Level3 we need a collision detection

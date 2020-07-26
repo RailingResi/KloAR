@@ -1,4 +1,14 @@
-﻿using System.Collections;
+﻿/* 
+    ------------- flashOnCollision.cs -----------
+
+    Isabella Horn, 25.July 2020:
+    The user should clearly recognize when a 
+    collision with a bacterium has occurred. 
+
+    --------------------------------------------------
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

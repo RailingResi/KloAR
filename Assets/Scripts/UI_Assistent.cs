@@ -110,11 +110,39 @@ public class UI_Assistent : MonoBehaviour
                 else
                 {
                     StartTalkingSoundAndAnimation();
-                    textWriterSingle = TextWriter.AddWriter_Static(messageText, "TEST TEST TEST!", 0.1f, true, true, StopTalkingSoundAndAnimation);
+                    textWriterSingle = TextWriter.AddWriter_Static(messageText, "Versuche dich vor den Bakterien in Sicherheit zu bringen", 0.1f, true, true, StopTalkingSoundAndAnimation);
                     if (StartGame.isTrackingMarker("CylinderTarget"))
                     {
                         StartTalkingSoundAndAnimation(); ;
-                        textWriterSingle = TextWriter.AddWriter_Static(messageText, "TEST TEST TEST 2222222!", 0.1f, true, true, StopTalkingSoundAndAnimation);
+                        textWriterSingle = TextWriter.AddWriter_Static(messageText, "Finde das Target um  das Spiel zu starten!", 0.1f, true, true, StopTalkingSoundAndAnimation);
+                    }
+                }
+            };
+        }
+
+        else if (sceneName == "Level3")
+        {
+            Debug.Log("Ich bin im dritten Level");
+            messageText = transform.Find("Message").Find("Text").GetComponent<Text>();
+            talkingAudioSource = transform.Find("TalkingSound").GetComponent<AudioSource>();
+            talkingAnimation = transform.Find("Message").GetComponent<Animation>();
+
+
+            transform.Find("Message").GetComponent<Button_UI>().ClickFunc = () =>
+            {
+                if (textWriterSingle != null && textWriterSingle.IsActive())
+                {
+                    //current active textwriter
+                    textWriterSingle.WriteAllAndDestroy();
+                }
+                else
+                {
+                    StartTalkingSoundAndAnimation();
+                    textWriterSingle = TextWriter.AddWriter_Static(messageText, "Nimm dich weiterhin in Acht vor den Bakterien aber versuche mit Masken dich zu schützen", 0.1f, true, true, StopTalkingSoundAndAnimation);
+                    if (StartGame.isTrackingMarker("CylinderTarget"))
+                    {
+                        StartTalkingSoundAndAnimation(); ;
+                        textWriterSingle = TextWriter.AddWriter_Static(messageText, "Finde das Target um  das Spiel zu starten!", 0.1f, true, true, StopTalkingSoundAndAnimation);
                     }
                 }
             };
@@ -147,6 +175,10 @@ public class UI_Assistent : MonoBehaviour
         if (sceneName == "Level2")
         {
             TextWriter.AddWriter_Static(messageText, "Super du hast es ins Level 2 geschafft", 0.1f, true, true, StopTalkingSoundAndAnimation);
+        }
+        if (sceneName == "Level3")
+        {
+            TextWriter.AddWriter_Static(messageText, "Gratuliere, du hast es ins Level 3 geschafft", 0.1f, true, true, StopTalkingSoundAndAnimation);
         }
 
 

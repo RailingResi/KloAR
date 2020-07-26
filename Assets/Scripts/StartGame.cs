@@ -42,14 +42,14 @@ public class StartGame : MonoBehaviour
     private void Awake()
     {
 
-        // just for deploment of level2 - do not commit!
-        if (!(SceneManager.GetActiveScene().name == "Level2")) {
-            SceneManager.LoadScene("Level2");
+        // just for deploment of level3 - do not commit!
+        if (!(SceneManager.GetActiveScene().name == "Level3")) {
+            SceneManager.LoadScene("Level3");
         }
     
         level = SceneManager.GetActiveScene().name;
         Debug.Log("I AM AWAKE");
-        if (level == "Level1" || level == "Level2") {
+        if (level == "Level1" || level == "Level2" || level == "Level3") {
             // get Timer object and add the script to the component, listening for events 'TimesIsUp' then invoking Handler
             timerGameObject = GameObject.Find("Timer");
             timerScript = timerGameObject.AddComponent<Timer>();
@@ -96,6 +96,10 @@ public class StartGame : MonoBehaviour
         else if (level == "Level2")
         {
             UpdateLevel2();
+        }
+        else if (level == "Level3")
+        {
+            UpdateLevel3();
         }
     }
 
@@ -178,6 +182,21 @@ public class StartGame : MonoBehaviour
        
     }
 
+      private void UpdateLevel3()
+    {
+       if (!levelStarted && !TextWriter.IsActive_Static()) 
+       {
+           levelStarted = true;
+
+           if (!timerScript.Active) 
+           {
+                timerScript.StartTimer();
+           }
+       }
+
+       
+    }
+
     private void TimeIsUpHandler(object sender, EventArgs e)
     {
         Debug.Log("Time is up");
@@ -215,6 +234,28 @@ public class StartGame : MonoBehaviour
         {
             Debug.Log("Game Over");
             if (level == "Level2")
+            {
+                vb_button.GetComponent<TextMesh>().text = "Retry";
+            }
+            
+         }
+    }
+
+        private void TimeIsUpHandlerLevel3(object sender, EventArgs e)
+    {
+        Debug.Log("Time is up");
+        if (collisionCount <= 10)
+        {
+            Debug.Log("Well done!");
+            if (level == "Level3")
+            {
+                vb_button.GetComponent<TextMesh>().text = "Next Level";
+            }
+        }
+        else
+        {
+            Debug.Log("Game Over");
+            if (level == "Level3")
             {
                 vb_button.GetComponent<TextMesh>().text = "Retry";
             }
