@@ -16,7 +16,8 @@ public class flashOnCollision : MonoBehaviour
 {
     private const float flashDuration = 0.1f;
 
-    private readonly Color TintColor = new Color(1f, 0f, 0f, 0.5f);
+    private readonly Color TintColorRed = new Color(1f, 0f, 0f, 0.5f);
+    private readonly Color TintColorRed = new Color(0f, 1f, 0f, 0.5f);
     private readonly Color Transparent = new Color(1f, 0f, 0f, 0f);
     private UnityEngine.UI.Image img;
     
@@ -34,7 +35,7 @@ public class flashOnCollision : MonoBehaviour
     {
         if (!active) 
         {
-            img.color = TintColor;
+            img.color = TintColorRed;
             active = true;
             timeElapsed = 0f;
         }

@@ -1,17 +1,17 @@
 # Summary
 
-Date : 2020-07-26 15:49:59
+Date : 2020-07-26 22:28:21
 
 Directory /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR
 
-Total : 25 files,  1351 codes, 288 comments, 297 blanks, all 1936 lines
+Total : 26 files,  1406 codes, 314 comments, 314 blanks, all 2034 lines
 
 [details](details.md)
 
 ## Languages
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| C# | 17 | 1,218 | 288 | 277 | 1,783 |
+| C# | 18 | 1,273 | 314 | 294 | 1,881 |
 | XML | 6 | 69 | 0 | 18 | 87 |
 | JSON | 1 | 54 | 0 | 1 | 55 |
 | Markdown | 1 | 10 | 0 | 1 | 11 |
@@ -19,8 +19,8 @@ Total : 25 files,  1351 codes, 288 comments, 297 blanks, all 1936 lines
 ## Directories
 | path | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| . | 25 | 1,351 | 288 | 297 | 1,936 |
-| Assets | 23 | 1,287 | 288 | 295 | 1,870 |
+| . | 26 | 1,406 | 314 | 314 | 2,034 |
+| Assets | 24 | 1,342 | 314 | 312 | 1,968 |
 | Assets/Editor | 4 | 183 | 0 | 64 | 247 |
 | Assets/Editor/Migration | 1 | 158 | 0 | 55 | 213 |
 | Assets/Editor/Vuforia | 3 | 25 | 0 | 9 | 34 |
@@ -28,7 +28,7 @@ Total : 25 files,  1351 codes, 288 comments, 297 blanks, all 1936 lines
 | Assets/Editor/Vuforia/CylinderTargetTextures/KloAR | 1 | 6 | 0 | 1 | 7 |
 | Assets/Editor/Vuforia/CylinderTargetTextures/VuforiaMars_Images | 1 | 6 | 0 | 1 | 7 |
 | Assets/Editor/Vuforia/VuforiaMars_ModelTarget | 1 | 13 | 0 | 7 | 20 |
-| Assets/Scripts | 16 | 1,060 | 288 | 222 | 1,570 |
+| Assets/Scripts | 17 | 1,115 | 314 | 239 | 1,668 |
 | Assets/StreamingAssets | 3 | 44 | 0 | 9 | 53 |
 | Assets/StreamingAssets/Vuforia | 3 | 44 | 0 | 9 | 53 |
 | Packages | 1 | 54 | 0 | 1 | 55 |

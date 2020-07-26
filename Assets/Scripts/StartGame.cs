@@ -42,10 +42,7 @@ public class StartGame : MonoBehaviour
     private void Awake()
     {
 
-        // just for deploment of level3 - do not commit!
-        if (!(SceneManager.GetActiveScene().name == "Level3")) {
-            SceneManager.LoadScene("Level3");
-        }
+        
     
         level = SceneManager.GetActiveScene().name;
         Debug.Log("I AM AWAKE");

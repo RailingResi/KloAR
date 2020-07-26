@@ -67,7 +67,7 @@ public class Spawner : MonoBehaviour
                         transform.rotation);
                     virusParicles.Add(Virus);
                 }
-                /* if (level == "Level3")
+                if (level == "Level3")
                 {
                      mask.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
 
@@ -76,7 +76,7 @@ public class Spawner : MonoBehaviour
                         transform.position + new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-10.0f, 10.0f), Random.value),
                         transform.rotation);
                     masks.Add(Mask);
-                } */
+                }
             }
         }
     }
