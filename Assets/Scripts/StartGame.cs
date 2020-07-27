@@ -41,9 +41,7 @@ public class StartGame : MonoBehaviour
 
     private void Awake()
     {
-
-       
-    
+            
         level = SceneManager.GetActiveScene().name;
         Debug.Log("I AM AWAKE");
         if (level == "Level1" || level == "Level2" || level == "Level3") {

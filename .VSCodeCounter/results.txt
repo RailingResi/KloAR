@@ -1,12 +1,12 @@
-Date : 2020-07-26 22:28:21
+Date : 2020-07-27 14:13:40
 Directory : /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR
-Total : 26 files,  1406 codes, 314 comments, 314 blanks, all 2034 lines
+Total : 27 files,  1441 codes, 322 comments, 322 blanks, all 2085 lines
 
 Languages
 +----------+------------+------------+------------+------------+------------+
 | language | files      | code       | comment    | blank      | total      |
 +----------+------------+------------+------------+------------+------------+
-| C#       |         18 |      1,273 |        314 |        294 |      1,881 |
+| C#       |         19 |      1,308 |        322 |        302 |      1,932 |
 | XML      |          6 |         69 |          0 |         18 |         87 |
 | JSON     |          1 |         54 |          0 |          1 |         55 |
 | Markdown |          1 |         10 |          0 |          1 |         11 |
@@ -16,8 +16,8 @@ Directories
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
 | path                                                                                                                                                        | files      | code       | comment    | blank      | total      |
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
-| .                                                                                                                                                           |         26 |      1,406 |        314 |        314 |      2,034 |
-| Assets                                                                                                                                                      |         24 |      1,342 |        314 |        312 |      1,968 |
+| .                                                                                                                                                           |         27 |      1,441 |        322 |        322 |      2,085 |
+| Assets                                                                                                                                                      |         25 |      1,377 |        322 |        320 |      2,019 |
 | Assets/Editor                                                                                                                                               |          4 |        183 |          0 |         64 |        247 |
 | Assets/Editor/Migration                                                                                                                                     |          1 |        158 |          0 |         55 |        213 |
 | Assets/Editor/Vuforia                                                                                                                                       |          3 |         25 |          0 |          9 |         34 |
@@ -25,7 +25,7 @@ Directories
 | Assets/Editor/Vuforia/CylinderTargetTextures/KloAR                                                                                                          |          1 |          6 |          0 |          1 |          7 |
 | Assets/Editor/Vuforia/CylinderTargetTextures/VuforiaMars_Images                                                                                             |          1 |          6 |          0 |          1 |          7 |
 | Assets/Editor/Vuforia/VuforiaMars_ModelTarget                                                                                                               |          1 |         13 |          0 |          7 |         20 |
-| Assets/Scripts                                                                                                                                              |         17 |      1,115 |        314 |        239 |      1,668 |
+| Assets/Scripts                                                                                                                                              |         18 |      1,150 |        322 |        247 |      1,719 |
 | Assets/StreamingAssets                                                                                                                                      |          3 |         44 |          0 |          9 |         53 |
 | Assets/StreamingAssets/Vuforia                                                                                                                              |          3 |         44 |          0 |          9 |         53 |
 | Packages                                                                                                                                                    |          1 |         54 |          0 |          1 |         55 |
@@ -47,19 +47,20 @@ Files
 | /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/EarthRotation.cs                                                   | C#       |         17 |         16 |          6 |         39 |
 | /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/Island.cs                                                          | C#       |         10 |         10 |          3 |         23 |
 | /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/Mask.cs                                                            | C#       |         43 |         26 |         16 |         85 |
+| /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/MaskCollisionDetection.cs                                          | C#       |         22 |          9 |          7 |         38 |
 | /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/Spawner.cs                                                         | C#       |         60 |         16 |          8 |         84 |
-| /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/StartGame.cs                                                       | C#       |        211 |         30 |         41 |        282 |
+| /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/StartGame.cs                                                       | C#       |        215 |         29 |         41 |        285 |
 | /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/TextWriter.cs                                                      | C#       |        122 |         25 |         23 |        170 |
 | /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/Timer.cs                                                           | C#       |         48 |         17 |         12 |         77 |
 | /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/UI_Assistent.cs                                                    | C#       |        139 |         24 |         24 |        187 |
 | /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/VirtualButton.cs                                                   | C#       |         49 |         12 |          7 |         68 |
 | /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/Virus.cs                                                           | C#       |        101 |         20 |         18 |        139 |
 | /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/Welcome.cs                                                         | C#       |         39 |         17 |          7 |         63 |
-| /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/flashOnCollision.cs                                                | C#       |         38 |          9 |         16 |         63 |
+| /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/Scripts/flashOnCollision.cs                                                | C#       |         47 |          9 |         17 |         73 |
 | /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/StreamingAssets/Vuforia/KloAR.xml                                          | XML      |          7 |          0 |          1 |          8 |
 | /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/StreamingAssets/Vuforia/VuforiaMars_Images.xml                             | XML      |         24 |          0 |          1 |         25 |
 | /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Assets/StreamingAssets/Vuforia/VuforiaMars_ModelTarget.xml                        | XML      |         13 |          0 |          7 |         20 |
 | /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/Packages/manifest.json                                                            | JSON     |         54 |          0 |          1 |         55 |
 | /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR/README.md                                                                         | Markdown |         10 |          0 |          1 |         11 |
-| Total                                                                                                                                                       |          |      1,406 |        314 |        314 |      2,034 |
+| Total                                                                                                                                                       |          |      1,441 |        322 |        322 |      2,085 |
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

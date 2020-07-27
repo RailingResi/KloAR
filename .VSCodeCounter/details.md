@@ -1,10 +1,10 @@
 # Details
 
-Date : 2020-07-26 22:28:21
+Date : 2020-07-27 14:13:40
 
 Directory /Users/marliesmitterhuber/Documents/Isabella/HCC/2. Semester/AR_Klo/KloAR
 
-Total : 26 files,  1406 codes, 314 comments, 314 blanks, all 2034 lines
+Total : 27 files,  1441 codes, 322 comments, 322 blanks, all 2085 lines
 
 [summary](results.md)
 
@@ -23,15 +23,16 @@ Total : 26 files,  1406 codes, 314 comments, 314 blanks, all 2034 lines
 | [Assets/Scripts/EarthRotation.cs](/Assets/Scripts/EarthRotation.cs) | C# | 17 | 16 | 6 | 39 |
 | [Assets/Scripts/Island.cs](/Assets/Scripts/Island.cs) | C# | 10 | 10 | 3 | 23 |
 | [Assets/Scripts/Mask.cs](/Assets/Scripts/Mask.cs) | C# | 43 | 26 | 16 | 85 |
+| [Assets/Scripts/MaskCollisionDetection.cs](/Assets/Scripts/MaskCollisionDetection.cs) | C# | 22 | 9 | 7 | 38 |
 | [Assets/Scripts/Spawner.cs](/Assets/Scripts/Spawner.cs) | C# | 60 | 16 | 8 | 84 |
-| [Assets/Scripts/StartGame.cs](/Assets/Scripts/StartGame.cs) | C# | 211 | 30 | 41 | 282 |
+| [Assets/Scripts/StartGame.cs](/Assets/Scripts/StartGame.cs) | C# | 215 | 29 | 41 | 285 |
 | [Assets/Scripts/TextWriter.cs](/Assets/Scripts/TextWriter.cs) | C# | 122 | 25 | 23 | 170 |
 | [Assets/Scripts/Timer.cs](/Assets/Scripts/Timer.cs) | C# | 48 | 17 | 12 | 77 |
 | [Assets/Scripts/UI_Assistent.cs](/Assets/Scripts/UI_Assistent.cs) | C# | 139 | 24 | 24 | 187 |
 | [Assets/Scripts/VirtualButton.cs](/Assets/Scripts/VirtualButton.cs) | C# | 49 | 12 | 7 | 68 |
 | [Assets/Scripts/Virus.cs](/Assets/Scripts/Virus.cs) | C# | 101 | 20 | 18 | 139 |
 | [Assets/Scripts/Welcome.cs](/Assets/Scripts/Welcome.cs) | C# | 39 | 17 | 7 | 63 |
-| [Assets/Scripts/flashOnCollision.cs](/Assets/Scripts/flashOnCollision.cs) | C# | 38 | 9 | 16 | 63 |
+| [Assets/Scripts/flashOnCollision.cs](/Assets/Scripts/flashOnCollision.cs) | C# | 47 | 9 | 17 | 73 |
 | [Assets/StreamingAssets/Vuforia/KloAR.xml](/Assets/StreamingAssets/Vuforia/KloAR.xml) | XML | 7 | 0 | 1 | 8 |
 | [Assets/StreamingAssets/Vuforia/VuforiaMars_Images.xml](/Assets/StreamingAssets/Vuforia/VuforiaMars_Images.xml) | XML | 24 | 0 | 1 | 25 |
 | [Assets/StreamingAssets/Vuforia/VuforiaMars_ModelTarget.xml](/Assets/StreamingAssets/Vuforia/VuforiaMars_ModelTarget.xml) | XML | 13 | 0 | 7 | 20 |
