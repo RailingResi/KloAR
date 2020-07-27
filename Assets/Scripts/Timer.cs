@@ -24,7 +24,10 @@ public class Timer : MonoBehaviour
     private Text countdownTime;
     bool active = false;
     float currentTime = 0f;
-    float startingTime = 5f;
+    float startingTime = 60f;
+    public GameObject vBtnObject;
+    private GameObject vBtnObjectText;
+
 
     public event EventHandler TimeIsUp;
 
@@ -36,6 +39,8 @@ public class Timer : MonoBehaviour
     private void Awake()
     {
         countdownTime = this.GetComponent<Text>();
+        vBtnObject = GameObject.Find("VirtualButton");
+        vBtnObjectText = GameObject.Find("ButtonText");
     }
 
     // Start is called before the first frame update
@@ -53,6 +58,8 @@ public class Timer : MonoBehaviour
         }
         currentTime -= 2 * Time.deltaTime;
         countdownTime.text = currentTime.ToString("0");
+        string prevText = vBtnObjectText.GetComponent<TextMesh>().text;
+        vBtnObjectText.GetComponent<TextMesh>().text = "Keine Aktion";
 
         if (currentTime <= 10)
         {
@@ -63,6 +70,7 @@ public class Timer : MonoBehaviour
         {
             currentTime = 0;
             TimeIsUp?.Invoke(this, new EventArgs());
+            vBtnObjectText.GetComponent<TextMesh>().text = prevText;
             active = false;
         }
     }
