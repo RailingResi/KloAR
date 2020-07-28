@@ -42,7 +42,7 @@ public class StartGame : MonoBehaviour
 
     private void Awake()
     {
-         if(!(SceneManager.GetActiveScene().name == "Level4")) {SceneManager.LoadScene("Level4");}
+        // if(!(SceneManager.GetActiveScene().name == "Level4")) {SceneManager.LoadScene("Level4");}
 
         level = SceneManager.GetActiveScene().name;
         Debug.Log("I AM AWAKE");
@@ -84,13 +84,6 @@ public class StartGame : MonoBehaviour
     private void Update()
     {
 
-                       
-
-
-        //if (level == "Welcome")
-        //{
-        //    UpdateWelcome();
-        //}
         if (level == "Level1") 
         {
             UpdateLevel1();
@@ -253,7 +246,7 @@ public class StartGame : MonoBehaviour
     private void TimeIsUpHandler(object sender, EventArgs e)
     {
         Debug.Log("Time is up");
-        if (counterScript.Hits > 20)
+        if (counterScript.Hits > 10)
         {
             Debug.Log("Well done!");
             if (level == "Level1")
@@ -263,10 +256,11 @@ public class StartGame : MonoBehaviour
         }
         else
         {
-            Debug.Log("Game Over");
+            Debug.Log("GameOver");
             if (level == "Level1")
             {
-                vb_button.GetComponent<TextMesh>().text = "Retry";
+                AcrossSceneParams.CrossSceneInformation = "Retry Level1";
+                SceneManager.LoadScene("GameOver");
             }
             
          }
@@ -288,9 +282,9 @@ public class StartGame : MonoBehaviour
             Debug.Log("Game Over");
             if (level == "Level2")
             {
-                vb_button.GetComponent<TextMesh>().text = "Retry";
+                AcrossSceneParams.CrossSceneInformation = "Retry Level2";
+                SceneManager.LoadScene("GameOver");
             }
-            
          }
     }
 
@@ -302,15 +296,17 @@ public class StartGame : MonoBehaviour
             Debug.Log("Well done!");
             if (level == "Level3")
             {
-                vb_button.GetComponent<TextMesh>().text = "Next Level";
+                AcrossSceneParams.CrossSceneInformation = "Play Again";
+                SceneManager.LoadScene("Winner");
             }
         }
         else
         {
-            Debug.Log("Game Over");
+            Debug.Log("GameOver");
             if (level == "Level3")
             {
-                vb_button.GetComponent<TextMesh>().text = "Retry";
+                AcrossSceneParams.CrossSceneInformation = "Retry Level3";
+                SceneManager.LoadScene("GameOver");
             }
             
          }

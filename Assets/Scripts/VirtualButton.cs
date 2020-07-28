@@ -21,8 +21,9 @@ using UnityEngine.SceneManagement;
 public class VirtualButton : MonoBehaviour
 {
     public GameObject vBtnObject;
-    public GameObject vBtnObjectText;
+    private GameObject vBtnObjectText;
     private string level;
+    string text; 
     // Start is called before the first frame update
     void Start()
     {
@@ -31,32 +32,64 @@ public class VirtualButton : MonoBehaviour
         vBtnObjectText = GameObject.Find("ButtonText");
         vBtnObject.GetComponent<VirtualButtonBehaviour>().RegisterOnButtonPressed(OnButtonPressed);
         vBtnObject.GetComponent<VirtualButtonBehaviour>().RegisterOnButtonPressed(OnButtonReleased);
+           
+        if (level == "GameOver" || level == "Winner")
+        {
+            Debug.Log("GAME OVER LEVEL");
+            vBtnObjectText.GetComponent<TextMesh>().text = AcrossSceneParams.CrossSceneInformation;
+        }
+
+        text = vBtnObjectText.GetComponent<TextMesh>().text;
+
+        Debug.Log(text);
     }
 
     public void OnButtonPressed(VirtualButtonBehaviour vb)
     {
-
         Debug.Log("Button Pressed");
+        Debug.Log("LEVEL: " + level);
+        Debug.Log("Text: " + text);
         if (level == "Welcome")
         {
             SceneManager.LoadScene("Level1");
         }
+        
         if (level == "Level1")
         {
-            string text = vBtnObjectText.GetComponent<TextMesh>().text;
-            Debug.Log("Buttontext: " + text);
-            if (text == "Retry")
+            
+            SceneManager.LoadScene("Level2");
+
+        }
+
+        if (level == "Level2")
+        {
+
+            SceneManager.LoadScene("Level3");
+
+        }
+
+        if (level == "GameOver")
+        {
+            if (text == "Retry Level1")
             {
                 SceneManager.LoadScene("Level1");
             }
-            else if (text == "Next Level")
+            else if (text == "Retry Level2")
             {
-                SceneManager.LoadScene("Level2");
+                SceneManager.LoadScene("Level1");
+            }
+            else if (text == "Retry Level3")
+            {
+                SceneManager.LoadScene("Level3");
             }
         }
-        if (level == "Level2")
+
+        if (level == "Winner")
         {
-            SceneManager.LoadScene("GameOver");
+            if (text == "Play Again")
+            {
+                SceneManager.LoadScene("Welcome");
+            }
         }
     }
 
