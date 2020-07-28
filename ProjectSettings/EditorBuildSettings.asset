@@ -13,12 +13,18 @@ EditorBuildSettings:
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/Level2.unity
-    guid: cd4b1b0239c2e4adc9e0c12eae830861
+    guid: df6fffcd85f8f45f09b15a3d275dde85
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 57f308b5fa4e74f729f4a44b3aee4687
   - enabled: 1
     path: Assets/Scenes/Level3.unity
+    guid: c1fca6a255df04fce8f74eedfd6c2d1e
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/cd4b1b0239c2e4adc9e0c12eae830861
+    guid: cd4b1b0239c2e4adc9e0c12eae830861
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/3b549c64d42dd4d6d87f0a3fb675e36e
     guid: 3b549c64d42dd4d6d87f0a3fb675e36e
   - enabled: 0
     path: Assets/Scenes/Collision.unity
@@ -26,7 +32,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Collider.unity
     guid: 29e84b589b6dd46b78f09ebb73e850c7
-  - enabled: 1
-    path: Assets/Scenes/Level4.unity
-    guid: df6fffcd85f8f45f09b15a3d275dde85
   m_configObjects: {}

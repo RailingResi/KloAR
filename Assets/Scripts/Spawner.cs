@@ -17,24 +17,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
 public class Spawner : MonoBehaviour
 {
-   
+
     public GameObject virusPrefab;
     public GameObject virusPrefabLevel1;
     public GameObject mask;
     private List<GameObject> masks;
-    private List<GameObject> virusParicles; 
+    private List<GameObject> virusParicles;
     private float respawnTime = 2f;
-    private string level; 
+    private float respawnTimeMask = 20f;
+    private string level;
     private float nextSpawnTime;
+    private float nextSpawnTimeMask;
 
     private void Start()
     {
         virusParicles = new List<GameObject>();
-        level = SceneManager.GetActiveScene().name; 
+        level = SceneManager.GetActiveScene().name;
     }
 
     // Update is called once per frame
@@ -67,17 +69,27 @@ public class Spawner : MonoBehaviour
                         transform.rotation);
                     virusParicles.Add(Virus);
                 }
-                if (level == "Level3")
-                {
-                     mask.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
 
-                    GameObject Mask = GameObject.Instantiate(
-                        mask,
-                        transform.position + new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-10.0f, 10.0f), Random.value),
-                        transform.rotation);
-                    masks.Add(Mask);
+                if (Time.time >= nextSpawnTimeMask)
+                {
+                    nextSpawnTimeMask = Time.time + respawnTimeMask + Random.Range(-10.0f, 10.0f);
+                    Debug.Log(level);
+
+                    if (level == "Level3")
+                    {
+                        mask.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
+
+                        GameObject Mask = GameObject.Instantiate(
+                            mask,
+                            transform.position + new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-10.0f, 10.0f), Random.value),
+                            transform.rotation);
+                        masks.Add(Mask);
+                    }
+
                 }
+
             }
+
         }
     }
 }

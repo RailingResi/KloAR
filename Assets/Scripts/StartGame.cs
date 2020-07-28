@@ -38,21 +38,25 @@ public class StartGame : MonoBehaviour
     private bool kurzSlideIn = false;
     private int collisionCount = 0;
     private flashOnCollision flash;
- 
+
 
     private void Awake()
     {
-        // if(!(SceneManager.GetActiveScene().name == "Level4")) {SceneManager.LoadScene("Level4");}
+        //if (!(SceneManager.GetActiveScene().name == "Level3")) { SceneManager.LoadScene("Level3"); }
 
         level = SceneManager.GetActiveScene().name;
         Debug.Log("I AM AWAKE");
-        if (level == "Level1" || level == "Level2" || level == "Level3" || level == "Level4") {
+        if (level == "Level1" || level == "Level2" || level == "Level3")
+        {
             // get Timer object and add the script to the component, listening for events 'TimesIsUp' then invoking Handler
             timerGameObject = GameObject.Find("Timer");
             timerScript = timerGameObject.AddComponent<Timer>();
             Debug.Log("Timer: " + timerScript);
             timerScript.TimeIsUp += TimeIsUpHandler;
             timerScript.TimeIsUp += TimeIsUpHandlerLevel2;
+            timerScript.TimeIsUp += TimeIsUpHandlerLevel3;
+
+
 
 
             // get Counter object and add counter script to the component
@@ -61,15 +65,15 @@ public class StartGame : MonoBehaviour
             counterScript = counterGameObject.AddComponent<Counter>();
         }
 
-        if (level == "Level4")
+        if (level == "Level2" || level == "Level3")
         {
             flash = GameObject.Find("ScreenTint").GetComponent<flashOnCollision>();
         }
 
 
-       /*  if (level == "Level2") {
-            timerScript.StartTimer();
-        } */
+        /*  if (level == "Level2") {
+             timerScript.StartTimer();
+         } */
     }
 
     // Start is called before the first frame update
@@ -84,7 +88,7 @@ public class StartGame : MonoBehaviour
     private void Update()
     {
 
-        if (level == "Level1") 
+        if (level == "Level1")
         {
             UpdateLevel1();
         }
@@ -95,10 +99,6 @@ public class StartGame : MonoBehaviour
         else if (level == "Level3")
         {
             UpdateLevel3();
-        }
-        else if (level == "Level4")
-        {
-            UpdateLevel4();
         }
     }
 
@@ -142,7 +142,7 @@ public class StartGame : MonoBehaviour
                             Debug.Log(rig + "> This is the Rigidbody I have touched");
                             var collider = hitInfo.collider.GetComponent<SphereCollider>();
                             Debug.Log("Collider: " + collider);
-                           
+
                             if (!timerScript.Active)
                             {
                                 timerScript.StartTimer();
@@ -157,7 +157,7 @@ public class StartGame : MonoBehaviour
                             }
                             if (hitInfo.collider.gameObject.tag == "virus")
                             {
-                                Debug.Log("TEST THE HIT"); 
+                                Debug.Log("TEST THE HIT");
                             }
                         }
                     }
@@ -166,54 +166,22 @@ public class StartGame : MonoBehaviour
         }
     }
 
+    /*   private void UpdateLevel2()
+      {
+         if (!levelStarted && !TextWriter.IsActive_Static()) 
+         {
+             levelStarted = true;
+
+             if (!timerScript.Active) 
+             {
+                  timerScript.StartTimer();
+             }
+         }
+
+
+      } */
+
     private void UpdateLevel2()
-    {
-       if (!levelStarted && !TextWriter.IsActive_Static()) 
-       {
-           levelStarted = true;
-
-           if (!timerScript.Active) 
-           {
-                timerScript.StartTimer();
-           }
-       }
-
-       
-    }
-
-    private bool wasHit = false;
-
-      private void UpdateLevel3()
-    {
-       if (!levelStarted && !TextWriter.IsActive_Static()) 
-       {
-           levelStarted = true;
-
-           if (!timerScript.Active) 
-           {
-                timerScript.StartTimer();
-           }
-           // Ray ray = camera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
-
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.25F, 0.25F, 0));
-        Debug.DrawRay(ray.origin, ray.direction, Color.green);
-        //Ray ray = Camera.main.ScreenPointToRay(new Vector3(0.5F, 0.5F, 0));
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-        {
-            wasHit = true;
-            GameObject.Find("DebugText").GetComponent<Text>().text = "I'm looking at " + hit.transform.name;
-        }
-        else if (!wasHit)
-        {
-            GameObject.Find("DebugText").GetComponent<Text>().text = "I'm looking at nothing!";
-        }
-       }
-
-       
-    }
-
-    private void UpdateLevel4()
     {
 
         RaycastHit hitInfo;
@@ -225,7 +193,7 @@ public class StartGame : MonoBehaviour
 
         if (Physics.Raycast(ray.origin, ray.direction, out hitInfo)) // in the hitInfo I can get the object we hit.
         {
-            
+
             var rig = hitInfo.rigidbody.GetComponent<Rigidbody>();
 
             if (hitInfo.collider.gameObject.tag == "virus")
@@ -233,8 +201,39 @@ public class StartGame : MonoBehaviour
                 Destroy(hitInfo.collider.gameObject);
                 flash.DoFlashRed();
                 counterScript.IncrementCount();
-            } 
-            else if (hitInfo.collider.gameObject.tag == "mask") 
+            }
+            else if (hitInfo.collider.gameObject.tag == "mask")
+            {
+                Destroy(hitInfo.collider.gameObject);
+                flash.DoFlashGreen();
+                counterScript.DecrementCount();
+            }
+        }
+    }
+
+    private bool wasHit = false;
+
+    private void UpdateLevel3()
+    {
+        RaycastHit hitInfo;
+        var ray = Camera.main.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0)); // we have a ray that hits anything starting from the camera
+
+        Debug.Log(ray);
+        Debug.DrawRay(ray.origin, ray.direction, Color.green);
+
+
+        if (Physics.Raycast(ray.origin, ray.direction, out hitInfo)) // in the hitInfo I can get the object we hit.
+        {
+
+            var rig = hitInfo.rigidbody.GetComponent<Rigidbody>();
+
+            if (hitInfo.collider.gameObject.tag == "virus")
+            {
+                Destroy(hitInfo.collider.gameObject);
+                flash.DoFlashRed();
+                counterScript.IncrementCount();
+            }
+            else if (hitInfo.collider.gameObject.tag == "mask")
             {
                 Destroy(hitInfo.collider.gameObject);
                 flash.DoFlashGreen();
@@ -245,80 +244,90 @@ public class StartGame : MonoBehaviour
 
     private void TimeIsUpHandler(object sender, EventArgs e)
     {
-        Debug.Log("Time is up");
-        if (counterScript.Hits > 10)
+        if (level == "Level1")
         {
-            Debug.Log("Well done!");
-            if (level == "Level1")
+            Debug.Log("Time is up");
+            if (counterScript.Hits > 10)
             {
-                vb_button.GetComponent<TextMesh>().text = "Next Level";
+                Debug.Log("Well done!");
+                if (level == "Level1")
+                {
+                    vb_button.GetComponent<TextMesh>().text = "Next Level";
+                }
             }
+            else
+            {
+                Debug.Log("GameOver");
+                if (level == "Level1")
+                {
+                    AcrossSceneParams.CrossSceneInformation = "Retry Level1";
+                    SceneManager.LoadScene("GameOver");
+                }
+            }
+
         }
-        else
-        {
-            Debug.Log("GameOver");
-            if (level == "Level1")
-            {
-                AcrossSceneParams.CrossSceneInformation = "Retry Level1";
-                SceneManager.LoadScene("GameOver");
-            }
-            
-         }
     }
 
     private void TimeIsUpHandlerLevel2(object sender, EventArgs e)
     {
-        Debug.Log("Time is up");
-        if (collisionCount <= 10)
+        if (level == "Level2")
         {
-            Debug.Log("Well done!");
-            if (level == "Level2")
+            Debug.Log("Time is up");
+            if (collisionCount <= 10)
             {
-                vb_button.GetComponent<TextMesh>().text = "Next Level";
+                Debug.Log("Well done!");
+                if (level == "Level2")
+                {
+                    vb_button.GetComponent<TextMesh>().text = "Next Level";
+                }
+
+            }
+            else
+            {
+                Debug.Log("Game Over");
+                if (level == "Level2")
+                {
+                    AcrossSceneParams.CrossSceneInformation = "Retry Level2";
+                    SceneManager.LoadScene("GameOver");
+                }
             }
         }
-        else
-        {
-            Debug.Log("Game Over");
-            if (level == "Level2")
-            {
-                AcrossSceneParams.CrossSceneInformation = "Retry Level2";
-                SceneManager.LoadScene("GameOver");
-            }
-         }
     }
 
-        private void TimeIsUpHandlerLevel3(object sender, EventArgs e)
+    private void TimeIsUpHandlerLevel3(object sender, EventArgs e)
     {
-        Debug.Log("Time is up");
-        if (collisionCount <= 10)
+        if (level == "Level3")
         {
-            Debug.Log("Well done!");
-            if (level == "Level3")
+            Debug.Log("Time is up");
+            if (collisionCount <= 10)
             {
-                AcrossSceneParams.CrossSceneInformation = "Play Again";
-                SceneManager.LoadScene("Winner");
+                Debug.Log("Well done!");
+                if (level == "Level3")
+                {
+                    AcrossSceneParams.CrossSceneInformation = "Play Again";
+                    SceneManager.LoadScene("Winner");
+                }
+            }
+            else
+            {
+                Debug.Log("GameOver");
+                if (level == "Level3")
+                {
+                    AcrossSceneParams.CrossSceneInformation = "Retry Level3";
+                    SceneManager.LoadScene("GameOver");
+                }
+
             }
         }
-        else
-        {
-            Debug.Log("GameOver");
-            if (level == "Level3")
-            {
-                AcrossSceneParams.CrossSceneInformation = "Retry Level3";
-                SceneManager.LoadScene("GameOver");
-            }
-            
-         }
     }
 
-    public void OnLevel2BacteraCollection() 
+    public void OnLevel2BacteraCollection()
     {
         flash.DoFlashRed();
         Debug.Log("collisionscript");
     }
 
-    public void MaskCollision() 
+    public void MaskCollision()
     {
         flash.DoFlashGreen();
         Debug.Log("collisionscript");

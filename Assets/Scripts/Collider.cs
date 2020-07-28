@@ -1,4 +1,14 @@
-﻿using System.Collections;
+﻿/* 
+    ------------------ Collider.cs -------------------
+
+    Isabella Horn, 25.July 2020:
+    handles collsion events
+
+    --------------------------------------------------
+ */
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

@@ -31,7 +31,7 @@ public class Counter : MonoBehaviour
     private void Awake()
     {
         countedHits = this.GetComponent<Text>();
-        if (SceneManager.GetActiveScene().name == "Level4") 
+        if (SceneManager.GetActiveScene().name == "Level2" || SceneManager.GetActiveScene().name == "Level2")
         {
             text = "Hits: ";
         }
