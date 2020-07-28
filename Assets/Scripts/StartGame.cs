@@ -38,13 +38,15 @@ public class StartGame : MonoBehaviour
     private bool kurzSlideIn = false;
     private int collisionCount = 0;
     private flashOnCollision flash;
+ 
 
     private void Awake()
     {
-            
+         if(!(SceneManager.GetActiveScene().name == "Level4")) {SceneManager.LoadScene("Level4");}
+
         level = SceneManager.GetActiveScene().name;
         Debug.Log("I AM AWAKE");
-        if (level == "Level1" || level == "Level2" || level == "Level3") {
+        if (level == "Level1" || level == "Level2" || level == "Level3" || level == "Level4") {
             // get Timer object and add the script to the component, listening for events 'TimesIsUp' then invoking Handler
             timerGameObject = GameObject.Find("Timer");
             timerScript = timerGameObject.AddComponent<Timer>();
@@ -59,7 +61,7 @@ public class StartGame : MonoBehaviour
             counterScript = counterGameObject.AddComponent<Counter>();
         }
 
-        if (level == "Level2")
+        if (level == "Level4")
         {
             flash = GameObject.Find("ScreenTint").GetComponent<flashOnCollision>();
         }
@@ -73,6 +75,7 @@ public class StartGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         Debug.Log("I am alive and my name is KloAR");
     }
 
@@ -80,6 +83,10 @@ public class StartGame : MonoBehaviour
 
     private void Update()
     {
+
+                       
+
+
         //if (level == "Welcome")
         //{
         //    UpdateWelcome();
@@ -95,6 +102,10 @@ public class StartGame : MonoBehaviour
         else if (level == "Level3")
         {
             UpdateLevel3();
+        }
+        else if (level == "Level4")
+        {
+            UpdateLevel4();
         }
     }
 
@@ -177,6 +188,8 @@ public class StartGame : MonoBehaviour
        
     }
 
+    private bool wasHit = false;
+
       private void UpdateLevel3()
     {
        if (!levelStarted && !TextWriter.IsActive_Static()) 
@@ -187,9 +200,54 @@ public class StartGame : MonoBehaviour
            {
                 timerScript.StartTimer();
            }
+           // Ray ray = camera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.25F, 0.25F, 0));
+        Debug.DrawRay(ray.origin, ray.direction, Color.green);
+        //Ray ray = Camera.main.ScreenPointToRay(new Vector3(0.5F, 0.5F, 0));
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            wasHit = true;
+            GameObject.Find("DebugText").GetComponent<Text>().text = "I'm looking at " + hit.transform.name;
+        }
+        else if (!wasHit)
+        {
+            GameObject.Find("DebugText").GetComponent<Text>().text = "I'm looking at nothing!";
+        }
        }
 
        
+    }
+
+    private void UpdateLevel4()
+    {
+
+        RaycastHit hitInfo;
+        var ray = Camera.main.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0)); // we have a ray that hits anything starting from the camera
+
+        Debug.Log(ray);
+        Debug.DrawRay(ray.origin, ray.direction, Color.green);
+
+
+        if (Physics.Raycast(ray.origin, ray.direction, out hitInfo)) // in the hitInfo I can get the object we hit.
+        {
+            
+            var rig = hitInfo.rigidbody.GetComponent<Rigidbody>();
+
+            if (hitInfo.collider.gameObject.tag == "virus")
+            {
+                Destroy(hitInfo.collider.gameObject);
+                flash.DoFlashRed();
+                counterScript.IncrementCount();
+            } 
+            else if (hitInfo.collider.gameObject.tag == "mask") 
+            {
+                Destroy(hitInfo.collider.gameObject);
+                flash.DoFlashGreen();
+                counterScript.DecrementCount();
+            }
+        }
     }
 
     private void TimeIsUpHandler(object sender, EventArgs e)
@@ -260,10 +318,8 @@ public class StartGame : MonoBehaviour
 
     public void OnLevel2BacteraCollection() 
     {
-        flash.DoFlash();
+        flash.DoFlashRed();
         Debug.Log("collisionscript");
-        collisionCount++;
-        GameObject.Find("Counter").GetComponent<Text>().text = "Hits: " + collisionCount;
     }
 
     public void MaskCollision() 

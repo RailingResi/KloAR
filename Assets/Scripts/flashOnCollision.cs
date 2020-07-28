@@ -31,7 +31,7 @@ public class flashOnCollision : MonoBehaviour
         img =  GameObject.Find("ScreenTint").GetComponent<UnityEngine.UI.Image>();
     }
 
-    public void DoFlash() 
+    public void DoFlashRed() 
     {
         if (!active) 
         {

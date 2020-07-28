@@ -13,12 +13,15 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class Counter : MonoBehaviour
 {
     private Text countedHits;
     private float hits = 0f;
+
+    private string text = "Count: ";
 
     public float Hits
     {
@@ -28,6 +31,10 @@ public class Counter : MonoBehaviour
     private void Awake()
     {
         countedHits = this.GetComponent<Text>();
+        if (SceneManager.GetActiveScene().name == "Level4") 
+        {
+            text = "Hits: ";
+        }
     }
 
     /// <summary>
@@ -37,7 +44,13 @@ public class Counter : MonoBehaviour
     public void IncrementCount()
     {
         hits += 1f;
-        countedHits.text = "Count: " + hits;
+        countedHits.text = text + hits;
+    }
+
+    public void DecrementCount()
+    {
+        hits -= 1f;
+        countedHits.text = text + hits;
     }
 
 }
