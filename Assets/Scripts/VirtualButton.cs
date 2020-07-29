@@ -46,26 +46,28 @@ public class VirtualButton : MonoBehaviour
 
     public void OnButtonPressed(VirtualButtonBehaviour vb)
     {
-        Debug.Log("Button Pressed");
-        Debug.Log("LEVEL: " + level);
-        Debug.Log("Text: " + text);
         if (level == "Welcome")
         {
-            SceneManager.LoadScene("Level1");
+            if (isTrackingMarker("CylinderTarget"))
+            {
+                SceneManager.LoadScene("Level1");
+            }   
         }
         
         if (level == "Level1")
         {
-            
-            SceneManager.LoadScene("Level2");
-
+            if (isTrackingMarker("CylinderTarget") && text != "Keine Aktion")
+            {
+                SceneManager.LoadScene("Level2");
+            }
         }
 
         if (level == "Level2")
         {
-
-            SceneManager.LoadScene("Level3");
-
+            if (isTrackingMarker("CylinderTarget") && text != "Keine Aktion")
+            {
+                SceneManager.LoadScene("Level3");
+            }
         }
 
         if (level == "GameOver")
@@ -76,7 +78,7 @@ public class VirtualButton : MonoBehaviour
             }
             else if (text == "Retry Level2")
             {
-                SceneManager.LoadScene("Level1");
+                SceneManager.LoadScene("Level2");
             }
             else if (text == "Retry Level3")
             {
@@ -96,5 +98,13 @@ public class VirtualButton : MonoBehaviour
     public void OnButtonReleased(VirtualButtonBehaviour vb)
     {
         Debug.Log("BTN Released");
+    }
+
+    public static bool isTrackingMarker(string imageTargetName)
+    {
+        var imageTarget = GameObject.Find(imageTargetName);
+        var trackable = imageTarget.GetComponent<TrackableBehaviour>();
+        var status = trackable.CurrentStatus;
+        return status == TrackableBehaviour.Status.TRACKED;
     }
 }

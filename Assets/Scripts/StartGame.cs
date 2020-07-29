@@ -36,14 +36,12 @@ public class StartGame : MonoBehaviour
     private string level;
     private bool levelStarted = false;
     private bool kurzSlideIn = false;
-    private int collisionCount = 0;
+    private int collisionCount;
     private flashOnCollision flash;
 
 
     private void Awake()
     {
-        //if (!(SceneManager.GetActiveScene().name == "Level3")) { SceneManager.LoadScene("Level3"); }
-
         level = SceneManager.GetActiveScene().name;
         Debug.Log("I AM AWAKE");
         if (level == "Level1" || level == "Level2" || level == "Level3")
@@ -52,11 +50,18 @@ public class StartGame : MonoBehaviour
             timerGameObject = GameObject.Find("Timer");
             timerScript = timerGameObject.AddComponent<Timer>();
             Debug.Log("Timer: " + timerScript);
-            timerScript.TimeIsUp += TimeIsUpHandler;
-            timerScript.TimeIsUp += TimeIsUpHandlerLevel2;
-            timerScript.TimeIsUp += TimeIsUpHandlerLevel3;
-
-
+            if (level == "Level1")
+            {
+                timerScript.TimeIsUp += TimeIsUpHandler;
+            }
+            if (level == "Level2")
+            {
+                timerScript.TimeIsUp += TimeIsUpHandlerLevel2;
+            }
+            if (level == "Level3")
+            {
+                timerScript.TimeIsUp += TimeIsUpHandlerLevel3;
+            }
 
 
             // get Counter object and add counter script to the component
@@ -69,11 +74,6 @@ public class StartGame : MonoBehaviour
         {
             flash = GameObject.Find("ScreenTint").GetComponent<flashOnCollision>();
         }
-
-
-        /*  if (level == "Level2") {
-             timerScript.StartTimer();
-         } */
     }
 
     // Start is called before the first frame update
@@ -114,6 +114,7 @@ public class StartGame : MonoBehaviour
         }
     }
 
+    //Theresa
     private void UpdateLevel1()
     {
 
@@ -128,36 +129,34 @@ public class StartGame : MonoBehaviour
                 {
                     if (Input.GetTouch(0).phase == TouchPhase.Began)
                     {
-                        Debug.Log("Ich habe den Screen berührt");
-
                         RaycastHit hitInfo;
 
                         var ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position); // we have a ray that hits anything starting from the camera
-
                         Debug.Log(ray);
 
                         if (Physics.Raycast(ray.origin, ray.direction, out hitInfo)) // in the hitInfo I can get the object we hit.
                         {
                             var rig = hitInfo.rigidbody.GetComponent<Rigidbody>();
-                            Debug.Log(rig + "> This is the Rigidbody I have touched");
                             var collider = hitInfo.collider.GetComponent<SphereCollider>();
-                            Debug.Log("Collider: " + collider);
 
-                            if (!timerScript.Active)
+                            if (timerGameObject.activeInHierarchy)
                             {
-                                timerScript.StartTimer();
-                            }
+                                if (!timerScript.Active)
+                                {
+                                    timerScript.StartTimer();
+                                }
 
-                            if (rig != null)
-                            {
-                                rig.AddForceAtPosition(ray.direction * 30f, hitInfo.point, ForceMode.VelocityChange);
-                                Destroy(hitInfo.collider.gameObject, 1.0f);
-                                counterScript.IncrementCount();
+                                if (rig != null)
+                                {
+                                    rig.AddForceAtPosition(ray.direction * 30f, hitInfo.point, ForceMode.VelocityChange);
+                                    Destroy(hitInfo.collider.gameObject, 1.0f);
+                                    counterScript.IncrementCount();
 
-                            }
-                            if (hitInfo.collider.gameObject.tag == "virus")
-                            {
-                                Debug.Log("TEST THE HIT");
+                                }
+                                if (hitInfo.collider.gameObject.tag == "virus")
+                                {
+                                    Debug.Log("TEST THE HIT");
+                                }
                             }
                         }
                     }
@@ -166,21 +165,7 @@ public class StartGame : MonoBehaviour
         }
     }
 
-    /*   private void UpdateLevel2()
-      {
-         if (!levelStarted && !TextWriter.IsActive_Static()) 
-         {
-             levelStarted = true;
-
-             if (!timerScript.Active) 
-             {
-                  timerScript.StartTimer();
-             }
-         }
-
-
-      } */
-
+    //Isabella
     private void UpdateLevel2()
     {
 
@@ -194,22 +179,32 @@ public class StartGame : MonoBehaviour
         if (Physics.Raycast(ray.origin, ray.direction, out hitInfo)) // in the hitInfo I can get the object we hit.
         {
 
-            var rig = hitInfo.rigidbody.GetComponent<Rigidbody>();
+            if (timerGameObject.activeInHierarchy)
+            {
+                if (!timerScript.Active)
+                {
+                    timerScript.StartTimer();
+                }
+            
+                var rig = hitInfo.rigidbody.GetComponent<Rigidbody>();
 
-            if (hitInfo.collider.gameObject.tag == "virus")
-            {
-                Destroy(hitInfo.collider.gameObject);
-                flash.DoFlashRed();
-                counterScript.IncrementCount();
-            }
-            else if (hitInfo.collider.gameObject.tag == "mask")
-            {
-                Destroy(hitInfo.collider.gameObject);
-                flash.DoFlashGreen();
-                counterScript.DecrementCount();
+                if (hitInfo.collider.gameObject.tag == "virus")
+                {
+                    Destroy(hitInfo.collider.gameObject);
+                    flash.DoFlashRed();
+                    counterScript.IncrementCount();
+                }
+                else if (hitInfo.collider.gameObject.tag == "mask")
+                {
+                    Destroy(hitInfo.collider.gameObject);
+                    flash.DoFlashGreen();
+                    counterScript.DecrementCount();
+                }
             }
         }
     }
+
+    //Isabella
 
     private bool wasHit = false;
 
@@ -224,20 +219,27 @@ public class StartGame : MonoBehaviour
 
         if (Physics.Raycast(ray.origin, ray.direction, out hitInfo)) // in the hitInfo I can get the object we hit.
         {
-
-            var rig = hitInfo.rigidbody.GetComponent<Rigidbody>();
-
-            if (hitInfo.collider.gameObject.tag == "virus")
+            if (timerGameObject.activeInHierarchy)
             {
-                Destroy(hitInfo.collider.gameObject);
-                flash.DoFlashRed();
-                counterScript.IncrementCount();
-            }
-            else if (hitInfo.collider.gameObject.tag == "mask")
-            {
-                Destroy(hitInfo.collider.gameObject);
-                flash.DoFlashGreen();
-                counterScript.DecrementCount();
+                if (!timerScript.Active)
+                {
+                    timerScript.StartTimer();
+                }
+            
+                var rig = hitInfo.rigidbody.GetComponent<Rigidbody>();
+
+                if (hitInfo.collider.gameObject.tag == "virus")
+                {
+                    Destroy(hitInfo.collider.gameObject);
+                    flash.DoFlashRed();
+                    counterScript.IncrementCount();
+                }
+                else if (hitInfo.collider.gameObject.tag == "mask")
+                {
+                    Destroy(hitInfo.collider.gameObject);
+                    flash.DoFlashGreen();
+                    counterScript.DecrementCount();
+                }
             }
         }
     }
@@ -253,6 +255,8 @@ public class StartGame : MonoBehaviour
                 if (level == "Level1")
                 {
                     vb_button.GetComponent<TextMesh>().text = "Next Level";
+                    timerGameObject.SetActive(false);
+                    counterGameObject.SetActive(false);
                 }
             }
             else
@@ -270,17 +274,18 @@ public class StartGame : MonoBehaviour
 
     private void TimeIsUpHandlerLevel2(object sender, EventArgs e)
     {
+        Debug.Log("TIME IS UP HANDLER LEVEL 2");
         if (level == "Level2")
         {
-            Debug.Log("Time is up");
-            if (collisionCount <= 10)
+            Debug.Log("Time is up + collitionCount: " + counterScript.Hits);
+            if (counterScript.Hits <= 10)
             {
-                Debug.Log("Well done!");
                 if (level == "Level2")
                 {
                     vb_button.GetComponent<TextMesh>().text = "Next Level";
+                    timerGameObject.SetActive(false);
+                    counterGameObject.SetActive(false);
                 }
-
             }
             else
             {
@@ -296,10 +301,11 @@ public class StartGame : MonoBehaviour
 
     private void TimeIsUpHandlerLevel3(object sender, EventArgs e)
     {
+        Debug.Log("TIME IS UP HANDLER LEVEL 3");
         if (level == "Level3")
         {
             Debug.Log("Time is up");
-            if (collisionCount <= 10)
+            if (counterScript.Hits <= 10)
             {
                 Debug.Log("Well done!");
                 if (level == "Level3")

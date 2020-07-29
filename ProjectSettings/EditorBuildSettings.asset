@@ -27,9 +27,12 @@ EditorBuildSettings:
     path: Assets/__DELETED_GUID_Trash/3b549c64d42dd4d6d87f0a3fb675e36e
     guid: 3b549c64d42dd4d6d87f0a3fb675e36e
   - enabled: 0
-    path: Assets/Scenes/Collision.unity
+    path: 
     guid: 694c3a16b4a7446248e4b3288c49e260
   - enabled: 0
     path: Assets/Scenes/Collider.unity
     guid: 29e84b589b6dd46b78f09ebb73e850c7
+  - enabled: 1
+    path: Assets/Scenes/Winner.unity
+    guid: 00459977e9ad3493eab003c863291bf9
   m_configObjects: {}

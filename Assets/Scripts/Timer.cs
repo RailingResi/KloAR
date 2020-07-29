@@ -24,9 +24,12 @@ public class Timer : MonoBehaviour
     private Text countdownTime;
     bool active = false;
     float currentTime = 0f;
-    float startingTime = 60f;
+    float startingTime = 30f;
     public GameObject vBtnObject;
     private GameObject vBtnObjectText;
+
+    private GameObject timerGameObject;
+    private GameObject counterGameObject;
 
 
     public event EventHandler TimeIsUp;
@@ -58,9 +61,7 @@ public class Timer : MonoBehaviour
         }
         currentTime -= 2 * Time.deltaTime;
         countdownTime.text = currentTime.ToString("0");
-        string prevText = vBtnObjectText.GetComponent<TextMesh>().text;
-        vBtnObjectText.GetComponent<TextMesh>().text = "Keine Aktion";
-
+        
         if (currentTime <= 10)
         {
             countdownTime.color = Color.red;
@@ -70,7 +71,6 @@ public class Timer : MonoBehaviour
         {
             currentTime = 0;
             TimeIsUp?.Invoke(this, new EventArgs());
-            vBtnObjectText.GetComponent<TextMesh>().text = prevText;
             active = false;
         }
     }
@@ -79,6 +79,8 @@ public class Timer : MonoBehaviour
     {
         active = true;
         currentTime = startingTime;
+
+        vBtnObjectText.GetComponent<TextMesh>().text = "Keine Aktion";
     }
 
 }
